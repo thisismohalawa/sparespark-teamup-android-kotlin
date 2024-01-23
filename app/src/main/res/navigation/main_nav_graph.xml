@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/itemsListView">
+
+    <fragment
+        android:id="@+id/itemsListView"
+        android:name="sparespark.teamup.items.itemslist.ItemsListView"
+        android:label="ItemsListView"
+        tools:layout="@layout/itemslist_view">
+
+        <action
+            android:id="@+id/navigate_to_loginView"
+            app:destination="@id/loginActivity" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/itemDetailsView"
+        android:name="sparespark.teamup.items.itemdetails.ItemDetailsView"
+        android:label="ItemDetailsView"
+        tools:layout="@layout/itemdetails_view">
+
+        <action
+            android:id="@+id/navigate_to_loginView"
+            app:destination="@id/loginActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/loginActivity"
+        android:name="sparespark.teamup.login.LoginActivity"
+        android:label="activity_login"
+        tools:layout="@layout/login_view" />
+
+
+</navigation>
