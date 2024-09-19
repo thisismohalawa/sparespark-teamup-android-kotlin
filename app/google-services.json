@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "924665828073",
+    "firebase_url": "https://teamup-eeea8-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "teamup-eeea8",
+    "storage_bucket": "teamup-eeea8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:924665828073:android:03e6f830969dd6d12b9678",
+        "android_client_info": {
+          "package_name": "sparespark.teamup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "924665828073-dpepf54r56o5loh2bvolk20kb6e8jf9s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "sparespark.teamup",
+            "certificate_hash": "283a2eda1ad42269b46a2edbf987e02d4cd43c4a"
+          }
+        },
+        {
+          "client_id": "924665828073-jlk8gak3sv41s2gdrvtve845v49vith8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpFTOne03g_gcTB3i1M1HMAzf-BFZyV8I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "924665828073-jfs48q3ntd69hhhkd3vr2vhhq353ajue.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

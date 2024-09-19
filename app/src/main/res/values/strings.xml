@@ -1,3 +1,215 @@
 <resources>
     <string name="app_name">Teamup</string>
+    <string name="home">Home</string>
+
+
+    <!--Permission-->
+    <string name="permission_granted_storage">Storage Permission Granted</string>
+    <string name="permission_denied_storage">Storage Permission Denied</string>
+
+    <!--Login-->
+    <string name="or">OR</string>
+    <string name="login">Login</string>
+    <string name="logout">Logout</string>
+    <string name="signup">SIGNUP</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login_status">Login Status?</string>
+    <string name="create_account">Create a new account?</string>
+    <string name="continue_with_google">Continue With Google?</string>
+    <string name="signed_in_success">Signed in successfully.</string>
+
+    <!--Export-->
+    <string name="exporting">Exporting…</string>
+    <string name="export_list">Export List</string>
+    <string name="export_success">Data exported successfully.</string>
+    <string name="export_summary">Export a copy of your data list as a backup Excel file.</string>
+
+    <!--Backups-->
+    <string name="use_backups">Use Auto-Backups.</string>
+    <string name="backup_summary">Allow the device to backup a copy of your data list at a certain time.</string>
+    <string name="backup_setup">Backup set up for auto data backup.</string>
+    <string name="backup_canceled">Backup canceled.</string>
+    <string name="error_set_backup_alarm">Error while setting data backups.</string>
+    <string name="error_cancel_backup_alarm">Error while canceling data backups.</string>
+    <string name="data_backup">Data Backups.</string>
+    <string name="start_backup">Data backup to your local device has been started…</string>
+    <string name="erro_data_backup">Error while backup data.</string>
+
+    <!--Statics-->
+    <string name="total_balance">Total Balance</string>
+    <string name="calculating">Calculating…</string>
+    <string name="use_statics">Use Live Statistics.</string>
+    <string name="statics_summary">Use statistics to auto-calculate total asset price, quantity, and total balance.</string>
+    <string name="today_statics">Today\'s Statistics Only.</string>
+    <string name="active_statics">Active\'s Statistics Only.</string>
+    <string name="cannot_read_statistics">Cannot read statistics.</string>
+
+    <!--Auth-->
+    <string name="connecting">Connecting…</string>
+    <string name="unauthorized">Unauthorized.</string>
+    <string name="setup_sync">Setup synchronization.</string>
+    <string name="synced_success">User synced successfully.</string>
+    <string name="error_user_syncing">Error while syncing user.</string>
+    <string name="unauth_summary">An unauthorized. A local database is used.</string>
+    <string name="check_auth_user">Checking for an authorized user…</string>
+
+    <!--Remote Server-->
+    <string name="server">Server</string>
+    <string name="cached">Cached</string>
+    <string name="data_source">Data Source</string>
+    <string name="use_remote_server">Use a Remote Server.</string>
+    <string name="server_summary">Use our remote server for data sharing with your team, tracking your balance, and managing your business\'s finances.</string>
+    <string name="read_remote_user">Reading remote user data…</string>
+    <string name="server_disabled">Server disabled.</string>
+    <string name="no_internet">No Internet Connection.</string>
+
+    <!--Error-->
+    <string name="deactivated">Deactivated.</string>
+    <string name="disable">Disabled.</string>
+    <string name="not_permitted">Not Permitted.</string>
+    <string name="unable_to_sign_in">Unable to complete the signing-in process.</string>
+    <string name="unable_to_sign_out">Unable to complete the signing out process.</string>
+    <string name="unable_to_sign_up">Unable to complete the signing-up process.</string>
+    <string name="cannot_find_auth_user">Cannot find an authenticated user</string>
+    <string name="cannot_read_local_data">Cannot read local data.</string>
+    <string name="cannot_read_remote_data">Cannot read remote data.</string>
+    <string name="cannot_update_entries">Cannot update entries.</string>
+    <string name="cannot_update_remote_data">Cannot update remote data.</string>
+    <string name="cannot_update_local_entries">Cannot update local entries.</string>
+    <string name="error_retrieve_data">Error retrieving data.</string>
+    <string name="error_retrieve_clientlist">Error retrieving client list.</string>
+    <string name="error_retrieve_citylist">Error retrieving city list.</string>
+    <string name="error_retrieve_team">Error retrieving team.</string>
+    <string name="error_retrieve_notelist">Error retrieving note list.</string>
+    <string name="error_retrieve_itemlist">Error retrieving item list.</string>
+
+    <!--Inputs-->
+    <string name="required">(required)</string>
+    <string name="invalid">Invalid.</string>
+    <string name="invalid_name">Invalid name.</string>
+    <string name="invalid_cost">Invalid cost.</string>
+    <string name="invalid_phone_num">Invalid phone number.</string>
+    <string name="invalid_phone_num_format">Invalid phone number format.</string>
+
+    <!--Data Cache-->
+    <string name="cache_times">Cache Times</string>
+    <string name="clear_cache">Clear Cache?</string>
+    <string name="reset_cache">Reset Cache Times?</string>
+    <string name="main_max_cache_time">Set the maximum cache time for the main item list local storage, default is 10 minutes.</string>
+    <string name="set_max_cache_def4h">Set the maximum cache time for local storage, default is 4 hours.</string>
+    <string name="set_max_cache_def1h">Set the maximum cache time for local storage, default is 1 hour.</string>
+
+    <!--Advance Cache-->
+    <string name="advance_features">Advance Features</string>
+    <string name="user_calender_statics">Use Calender Statics.</string>
+    <string name="user_notes">Use Business Notes.</string>
+    <string name="notes_summary">Create, update, and delete notes for your team.</string>
+    <string name="suggest_add">Suggest adding data.</string>
+    <string name="add_summary">Suggest adding data each time an empty list is detected.</string>
+    <string name="share_summary">Suggest item sharing each time the item is successfully updated.</string>
+    <string name="suggest_share">Suggest share.</string>
+
+    <!--Calender-->
+    <string name="today">Today</string>
+    <string name="yesterday">Yesterday</string>
+    <string name="this_month">This Month</string>
+    <string name="all_time">All Time</string>
+
+
+    <!--City-->
+    <string name="city_list">City List.</string>
+    <string name="city_name">City name</string>
+    <string name="city_items">City\'s items</string>
+    <string name="empty_city_list">Your city list is empty.</string>
+    <string name="search_for_city">Search for city, state, or business location.</string>
+
+    <!--Client-->
+    <string name="client">Client</string>
+    <string name="client_list">Client List</string>
+    <string name="client_items">Client\'s items</string>
+    <string name="search_client">Search a client</string>
+    <string name="search_clients">Search for clients by name, phone, or business location.</string>
+    <string name="empty_client_list">Your client list is empty.</string>
+
+    <!--Expense-->
+    <string name="cost">Cost</string>
+    <string name="total">Total</string>
+    <string name="Income">Income</string>
+    <string name="note">Note</string>
+    <string name="expenses_list">Expenses List.</string>
+    <string name="search_expense">Search for an expense by cost, name, or creation date…</string>
+    <string name="expenses">Expenses</string>
+
+    <!--Share-->
+    <string name="by">By</string>
+    <string name="share_c">SHARE</string>
+    <string name="shared_with">Shared With</string>
+    <string name="share_item">Share item</string>
+    <string name="dial_client">Dial client</string>
+    <string name="msg_whatsapp">Message via WhatsApp</string>
+    <string name="copy_as_text">Copy as plain text?</string>
+    <string name="copied">Copied to clipboard.</string>
+
+
+    <!--Team-->
+    <string name="my_team">My Team</string>
+    <string name="team">Team</string>
+    <string name="team_list">Team List.</string>
+    <string name="last_login">Last Login</string>
+    <string name="team_summary">Activating and Deactivating Users.</string>
+
+    <!--Note-->
+    <string name="notes_list">Notes List.</string>
+
+    <!--UserProfile-->
+    <string name="owner">Owner</string>
+    <string name="name">Name</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="profile">Profile</string>
+
+    <!--Filter-->
+    <string name="filter">Filter</string>
+    <string name="active">Active</string>
+    <string name="uncompleted">Uncompleted</string>
+    <string name="buy">Buy</string>
+    <string name="sell">Sell</string>
+    <string name="admin">Admin</string>
+    <string name="admins_only">Admins only</string>
+    <string name="view_uncompleted">View Uncompleted?</string>
+    <string name="filtered">Filtered</string>
+    <string name="filter_balance">Filtered Balance</string>
+    <string name="exchange_list">Exchange List</string>
+    <string name="search_items">Search by client, location, or creation date…</string>
+    <string name="filter_by_month">Filter Within this month.</string>
+    <string name="filter_by_month_summary">Filter the data and search process within this month only.</string>
+
+    <!--Other-->
+    <string name="update">Update</string>
+    <string name="update_item">Update Item</string>
+    <string name="update_profile">Update Profle</string>
+    <string name="update_by">Updated by</string>
+    <string name="updated_success">Updated successfully.</string>
+    <string name="update_summary">Read, Update, and Delete Data.</string>
+    <string name="delete_permanently">Delete Permanently?</string>
+    <string name="refresh_list">Refresh List</string>
+
+
+    <!--Item-->
+    <string name="le">LE</string>
+    <string name="un">UN</string>
+    <string name="total_price">Total Price</string>
+    <string name="price">Price</string>
+    <string name="quantity">Quantity</string>
+
+    <!--Item-->
+    <string name="add">Add</string>
+    <string name="add_c">ADD</string>
+    <string name="empty">Empty.</string>
+    <string name="date">Date</string>
+    <string name="expand">Expand</string>
+    <string name="confirm">Confirm</string>
+    <string name="view_all">View all?</string>
+    <string name="view_item">View item?</string>
+
 </resources>

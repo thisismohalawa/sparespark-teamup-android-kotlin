@@ -1,9 +1,15 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.Teamup" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
-    </style>
 
-    <style name="Theme.Teamup" parent="Base.Theme.Teamup" />
+    <style name="Base.Theme.TEAMUP" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/violet</item>
+        <item name="colorOnPrimary">@color/light</item>
+        <item name="colorOnSecondary">@color/dark</item>
+        <item name="colorAccent">@color/violet</item>
+
+        <item name="android:statusBarColor">?attr/colorOnPrimary</item>
+        <item name="android:windowBackground">?attr/colorOnPrimary</item>
+        <item name="android:navigationBarColor">?attr/colorOnPrimary</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
+    </style>
 </resources>

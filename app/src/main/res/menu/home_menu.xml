@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_cache_pref"
+        android:menuCategory="secondary"
+        android:title="@string/cache_times"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_advance_pref"
+        android:menuCategory="secondary"
+        android:title="@string/advance_features"
+        app:showAsAction="never" />
+</menu>

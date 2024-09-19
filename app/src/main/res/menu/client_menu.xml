@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/expand_menu"
+        android:title="@string/expand" />
+    <item
+        android:id="@+id/refresh_menu"
+        android:title="@string/refresh_list" />
+    <item
+        android:id="@+id/client_items_menu"
+        android:title="@string/client_items" />
+    <item
+        android:id="@+id/dial_menu"
+        android:title="@string/dial_client" />
+    <item
+        android:id="@+id/msg_menu"
+        android:title="@string/msg_whatsapp" />
+    <item
+        android:id="@+id/delete_menu"
+        android:title="@string/delete_permanently" />
+</menu>

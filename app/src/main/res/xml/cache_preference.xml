@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="@string/cache_times">
+        <EditTextPreference
+            android:defaultValue="4"
+            android:key="CITY_CACHE_TIME"
+            android:summary="@string/set_max_cache_def4h"
+            android:title="@string/city_list" />
+        <EditTextPreference
+            android:defaultValue="4"
+            android:key="CLIENT_CACHE_TIME"
+            android:summary="@string/set_max_cache_def4h"
+            android:title="@string/client_list" />
+        <EditTextPreference
+            android:defaultValue="1"
+            android:key="EXPENSE_CACHE_TIME"
+            android:summary="@string/set_max_cache_def1h"
+            android:title="@string/expenses_list" />
+        <EditTextPreference
+            android:defaultValue="10"
+            android:key="NOTE_CACHE_TIME"
+            android:summary="@string/main_max_cache_time"
+            android:title="@string/notes_list" />
+        <EditTextPreference
+            android:defaultValue="10"
+            android:key="ITEM_CACHE_TIME"
+            android:summary="@string/main_max_cache_time"
+            android:title="@string/exchange_list" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/cache_times">
+        <Preference
+            android:key="CLEAR CACHE"
+            android:summary="@string/cache_times"
+            android:title="@string/clear_cache" />
+        <Preference
+            android:key="RESET CACHE"
+            android:summary="@string/update"
+            android:title="@string/reset_cache" />
+    </PreferenceCategory>
+</PreferenceScreen>

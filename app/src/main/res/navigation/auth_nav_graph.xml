@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_nav_graph"
+    app:startDestination="@id/loginView">
+    <fragment
+        android:id="@+id/loginView"
+        android:name="sparespark.teamup.auh.login.LoginView"
+        android:label="LoginView"
+        tools:layout="@layout/auth_view">
+        <action
+            android:id="@+id/navigate_to_signupView"
+            app:destination="@id/signUpView" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpView"
+        android:name="sparespark.teamup.auh.signup.SignUpView"
+        android:label="SignUpView"
+        tools:layout="@layout/auth_view">
+        <action
+            android:id="@+id/navigate_to_loginView"
+            app:destination="@id/loginView" />
+    </fragment>
+</navigation>

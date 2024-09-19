@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="@string/total_balance">
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="USE_STATICS_TODAY_ONLY"
+            android:summary="@string/exchange_list"
+            android:title="@string/today_statics" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="USE_STATICS_ACTIVE_ONLY"
+            android:summary="@string/exchange_list"
+            android:title="@string/active_statics" />
+
+    </PreferenceCategory>
+</PreferenceScreen>

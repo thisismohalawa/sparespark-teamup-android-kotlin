@@ -1,1 +1,4 @@
 /build
+/src/main/res/layout
+/src/main/java/sparespark/teamup/core/Constant.kt
+/src/main/java/sparespark/teamup/data/implementation
