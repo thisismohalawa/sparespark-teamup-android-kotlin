@@ -2,23 +2,49 @@ package sparespark.teamup.core
 
 import android.content.Context
 import android.graphics.Color
+import android.graphics.Paint
+import android.transition.AutoTransition
+import android.transition.TransitionManager
 import android.view.MenuItem
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
+import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
-import androidx.annotation.StringRes
-import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.core.text.parseAsHtml
-import com.google.android.material.snackbar.Snackbar
 import sparespark.teamup.R
-import sparespark.teamup.data.model.client.Client
-import sparespark.teamup.data.model.team.Team
 import java.util.Locale
+
+internal fun ImageView.setCustomImage(@DrawableRes drawable: Int, context: Context?) =
+    if (context != null) setImageDrawable(ContextCompat.getDrawable(context, drawable))
+    else Unit
+
+internal fun TextView.setCustomColor(@ColorRes intColor: Int, context: Context?) =
+    if (context != null) setTextColor(ContextCompat.getColor(context, intColor))
+    else setTextColor(Color.DKGRAY)
+
+internal fun TextView.setCustomIcon(
+    isIncome: Boolean, @DrawableRes inDrawable: Int, @DrawableRes outDrawable: Int
+) {
+    if (isIncome) this.setHintDrawable(inDrawable)
+    else this.setHintDrawable(outDrawable)
+}
+
+internal fun TextView.setLabeled(labeled: Boolean) {
+    this.paintFlags = if (labeled) paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+    else this.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
+}
+
+internal fun MenuItem.setRedTitle() = try {
+    val hexColor =
+        Integer.toHexString(Color.parseColor("#c46e6e")).toUpperCase(Locale.ROOT).substring(2)
+    val html = "<font color='#$hexColor'>$title</font>"
+    this.title = html.parseAsHtml()
+} catch (ex: Exception) {
+    ex.printStackTrace()
+}
 
 internal fun TextView.setHintDrawable(
     @DrawableRes drawable: Int, isRevered: Boolean = false
@@ -31,7 +57,7 @@ internal fun TextView.setHintDrawable(
 }
 
 internal fun TextView.setDrawablePNType(
-    total: Double, context: Context
+    income: Boolean, context: Context
 ) = try {
     fun setTintColor(
         @ColorRes color: Int, context: Context
@@ -45,7 +71,7 @@ internal fun TextView.setDrawablePNType(
         else this.compoundDrawables[0].setTint(ContextCompat.getColor(context, color))
     }
 
-    if (total > 0) {
+    if (income) {
         setHintDrawable(R.drawable.ic_arrow_up, isRevered = true)
         setTintColor(R.color.green, context)
     } else {
@@ -57,100 +83,11 @@ internal fun TextView.setDrawablePNType(
     ex.printStackTrace()
 }
 
-internal fun MenuItem.setRedTitle() = try {
-    val hexColor =
-        Integer.toHexString(Color.parseColor("#c46e6e")).toUpperCase(Locale.ROOT).substring(2)
-    val html = "<font color='#$hexColor'>$title</font>"
-    this.title = html.parseAsHtml()
-} catch (ex: Exception) {
-    ex.printStackTrace()
-}
-
-internal fun View.showSnackBar(
-    msg: String,
-    duration: Int,
-    aMsg: String?,
-    action: (() -> Unit)?
+internal fun ViewGroup.onViewedClickUpdateExpanding(
+    expandingLayout: ViewGroup
 ) {
-    Snackbar.make(this@showSnackBar, msg, duration).apply {
-        if (aMsg != null) setAction(aMsg) {
-            action?.let { it() }
-        }
-        show()
+    if (expandingLayout.visibility != View.VISIBLE) {
+        TransitionManager.beginDelayedTransition(this, AutoTransition())
+        expandingLayout.visible(true)
     }
 }
-
-internal fun Context.displayConfirmDialog(
-    @StringRes title: Int,
-    @StringRes positive: Int = R.string.confirm,
-    msg: String? = null,
-    pAction: (() -> Unit)?
-) {
-    AlertDialog.Builder(this@displayConfirmDialog)
-        .setTitle(title)
-        .setMessage(msg)
-        .setPositiveButton(this.getString(positive)) { _, _ ->
-            pAction?.let { it() }
-        }.show()
-}
-
-internal fun AutoCompleteTextView.bindClients(
-    list: List<Client>,
-    action: ((String) -> Unit)? = null
-) {
-    if (list.isEmpty()) {
-        this.setAdapter(null)
-        return
-    }
-    val clientNames = mutableListOf<String>()
-    for (i in list.indices) clientNames.add(list[i].name)
-
-    val aAdapter: ArrayAdapter<String> = ArrayAdapter(
-        context, android.R.layout.simple_spinner_dropdown_item, clientNames
-    )
-    this.setAdapter(aAdapter)
-    this.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
-        action?.invoke(
-            adapter.getItem(position).toString()
-        )
-    }
-}
-
-internal fun AutoCompleteTextView.bindTeam(
-    list: List<Team>,
-    action: ((String) -> Unit)? = null
-) {
-    if (list.isEmpty()) {
-        this.setAdapter(null)
-        return
-    }
-
-    val clientNames = mutableListOf<String>()
-    for (i in list.indices) clientNames.add(list[i].name)
-
-    val aAdapter: ArrayAdapter<String> = ArrayAdapter(
-        context, android.R.layout.simple_spinner_dropdown_item, clientNames
-    )
-    this.setAdapter(aAdapter)
-    this.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
-        action?.invoke(
-            adapter.getItem(position).toString()
-        )
-    }
-}
-
-internal fun bindDateWithInfo(
-    dHint: String,
-    iHint: String,
-    date: String,
-    info: String,
-): String = "$dHint: $date" + if (info.isNotBlank()) "\n$iHint: $info."
-else date + if (info.isNotBlank())
-    "\n$iHint $info." else ""
-
-internal fun bindNote(
-    nHint: String,
-    note: String
-): String =
-    if (note.isNotBlank()) "$nHint: $note"
-    else ""

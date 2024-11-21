@@ -8,28 +8,26 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import sparespark.teamup.R
-import sparespark.teamup.core.MENU_CITY
-import sparespark.teamup.core.MENU_CLIENT
-import sparespark.teamup.core.MENU_PROFILE
-import sparespark.teamup.core.MENU_TEAM
 import sparespark.teamup.core.binding.ViewBindingHolder
 import sparespark.teamup.core.binding.ViewBindingHolderImpl
+import sparespark.teamup.core.menu.MENU_CITY
+import sparespark.teamup.core.menu.MENU_CLIENT
+import sparespark.teamup.core.menu.MENU_COMPANY
+import sparespark.teamup.core.menu.MENU_PRODUCT
+import sparespark.teamup.core.menu.MENU_TEAM
 import sparespark.teamup.core.setupListItemDecoration
 import sparespark.teamup.core.wrapper.EventObserver
-import sparespark.teamup.data.model.IMenu
-import sparespark.teamup.data.model.User
+import sparespark.teamup.data.model.ProfileMenu
 import sparespark.teamup.databinding.ProfileViewBinding
-import sparespark.teamup.home.HomeViewInteract
+import sparespark.teamup.home.HomeActivityInteract
 import sparespark.teamup.userprofile.UserEvent
 import sparespark.teamup.userprofile.profile.buildlogic.ProfileViewInjector
 
-
-class ProfileView : Fragment(),
-    ViewBindingHolder<ProfileViewBinding> by ViewBindingHolderImpl() {
+class ProfileView : Fragment(), ViewBindingHolder<ProfileViewBinding> by ViewBindingHolderImpl() {
 
     private lateinit var menuAdapter: MenuAdapter
     private lateinit var viewModel: ProfileViewModel
-    private lateinit var viewInteract: HomeViewInteract
+    private lateinit var viewInteract: HomeActivityInteract
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -44,21 +42,19 @@ class ProfileView : Fragment(),
         setupViewInteract()
         setupViewModel()
         viewModel.startObserving()
+        setupClickListener()
     }
-
 
     private fun setupViewInteract() {
-        viewInteract = activity as HomeViewInteract
+        viewInteract = activity as HomeActivityInteract
     }
 
-    private fun setupMenuAdapter(list: List<IMenu>) {
+    private fun setupMenuAdapter(list: List<ProfileMenu>) {
         menuAdapter = MenuAdapter(list = list)
-        menuAdapter.event.observe(
-            viewLifecycleOwner
-        ) {
+        menuAdapter.event.observe(viewLifecycleOwner) {
             viewModel.handleEvent(it)
         }
-        binding?.recSettingsList?.apply {
+        binding?.recMenuList?.apply {
             setupListItemDecoration(context)
             adapter = menuAdapter
         }
@@ -69,8 +65,22 @@ class ProfileView : Fragment(),
             owner = this@ProfileView,
             factory = ProfileViewInjector(requireActivity().application).provideViewModelFactory()
         )[ProfileViewModel::class.java]
-        viewModel.handleEvent(UserEvent.GetUser)
+        viewModel.handleEvent(UserEvent.GetCurrentUser)
     }
+
+    private fun setupClickListener() {
+        val userListener = View.OnClickListener {
+            findNavController().navigate(ProfileViewDirections.navigateToProfileDetailView())
+        }
+        binding?.itemHeaderProfile?.apply {
+            txtName.setOnClickListener(userListener)
+            txtEmail.setOnClickListener(userListener)
+            imgUser.setOnClickListener(userListener)
+        }
+    }
+
+    private fun isProfileView(): Boolean =
+        findNavController().currentDestination?.id == R.id.profileView
 
     private fun ProfileViewModel.startObserving() {
         loading.observe(viewLifecycleOwner) {
@@ -85,45 +95,23 @@ class ProfileView : Fragment(),
         loginAttempt.observe(viewLifecycleOwner) {
             viewInteract.startAuthActivity()
         }
-        user.observe(viewLifecycleOwner) {
-            bindUser(it)
-        }
         menuList.observe(viewLifecycleOwner) {
             setupMenuAdapter(it)
         }
+        user.observe(viewLifecycleOwner) {
+            binding?.itemHeaderProfile?.apply {
+                txtName.text = it?.name
+                txtEmail.text = it?.email
+            }
+        }
         editMenu.observe(viewLifecycleOwner, EventObserver {
-            when (it) {
-                MENU_CITY -> navigateToCityView()
-                MENU_CLIENT -> navigateToClientView()
-                MENU_TEAM -> navigateToTeamView()
-                MENU_PROFILE -> navigateToProfileDetailView()
+            if (isProfileView()) when (it) {
+                MENU_CITY -> findNavController().navigate(ProfileViewDirections.navigateToCity())
+                MENU_CLIENT -> findNavController().navigate(ProfileViewDirections.navigateToClient())
+                MENU_COMPANY -> findNavController().navigate(ProfileViewDirections.navigateToCompany())
+                MENU_PRODUCT -> findNavController().navigate(ProfileViewDirections.navigateToProduct())
+                MENU_TEAM -> findNavController().navigate(ProfileViewDirections.navigateToTeam())
             }
         })
     }
-
-    private fun bindUser(user: User?) {
-        binding?.itemHeaderProfile?.apply {
-            txtName.text = user?.name
-            txtEmail.text = user?.email
-        }
-    }
-
-    private fun isProfileView(): Boolean =
-        findNavController().currentDestination?.id == R.id.profileView
-
-    private fun navigateToProfileDetailView() = if (isProfileView()) findNavController().navigate(
-        ProfileViewDirections.navigateToProfileDetailView()
-    ) else Unit
-
-    private fun navigateToCityView() = if (isProfileView()) findNavController().navigate(
-        ProfileViewDirections.navigateToCity()
-    ) else Unit
-
-    private fun navigateToTeamView() = if (isProfileView()) findNavController().navigate(
-        ProfileViewDirections.navigateToTeamView()
-    ) else Unit
-
-    private fun navigateToClientView() = if (isProfileView()) findNavController().navigate(
-        ProfileViewDirections.navigateToClient()
-    ) else Unit
 }

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="@string/total_balance">
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="TRANS_BALANCE_TODAY_ONLY"
+            android:summary="@string/transaction_list"
+            android:title="@string/balance_today" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="TRANS_BALANCE_ACTIVE_ONLY"
+            android:summary="@string/transaction_list"
+            android:title="@string/balance_active" />
+    </PreferenceCategory>
+</PreferenceScreen>

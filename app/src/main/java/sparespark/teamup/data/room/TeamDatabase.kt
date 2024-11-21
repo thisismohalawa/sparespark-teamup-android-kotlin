@@ -9,36 +9,45 @@ import sparespark.teamup.data.room.city.CityDao
 import sparespark.teamup.data.room.city.RoomCity
 import sparespark.teamup.data.room.client.ClientDao
 import sparespark.teamup.data.room.client.RoomClient
-import sparespark.teamup.data.room.expense.ExpenseDao
-import sparespark.teamup.data.room.expense.RoomExpense
-import sparespark.teamup.data.room.item.ItemDao
-import sparespark.teamup.data.room.item.RoomItemX
+import sparespark.teamup.data.room.company.CompanyDao
+import sparespark.teamup.data.room.company.RoomCompany
 import sparespark.teamup.data.room.note.NoteDao
 import sparespark.teamup.data.room.note.RoomNote
+import sparespark.teamup.data.room.product.ProductDao
+import sparespark.teamup.data.room.product.RoomProduct
+import sparespark.teamup.data.room.stock.RoomStock
+import sparespark.teamup.data.room.stock.StockDao
+import sparespark.teamup.data.room.transaction.RoomTransaction
+import sparespark.teamup.data.room.transaction.TransactionDao
 import sparespark.teamup.data.room.user.RoomUser
 import sparespark.teamup.data.room.user.UserDao
 
-private const val DATABASE = "team_db"
+private const val DATABASE = "teamup_db"
 
 @Database(
     entities = [
         RoomUser::class,
-        RoomItemX::class,
-        RoomClient::class,
-        RoomNote::class,
         RoomCity::class,
-        RoomExpense::class
+        RoomClient::class,
+        RoomCompany::class,
+        RoomProduct::class,
+        RoomNote::class,
+        RoomTransaction::class,
+        RoomStock::class,
     ], version = 1, exportSchema = false
 )
+
 @TypeConverters(DataConverter::class)
 abstract class TeamDatabase : RoomDatabase() {
 
     abstract fun userDao(): UserDao
-    abstract fun itemDao(): ItemDao
-    abstract fun clientDao(): ClientDao
-    abstract fun noteDao(): NoteDao
     abstract fun cityDao(): CityDao
-    abstract fun expenseDao(): ExpenseDao
+    abstract fun clientDao(): ClientDao
+    abstract fun companyDao(): CompanyDao
+    abstract fun productDao(): ProductDao
+    abstract fun noteDao(): NoteDao
+    abstract fun transactionDao(): TransactionDao
+    abstract fun stockDao(): StockDao
 
     companion object {
         @Volatile

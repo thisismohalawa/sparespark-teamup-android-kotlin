@@ -1,37 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="toolbar_padding">@dimen/_10sdp</dimen>
+    <!--======================S=================-->
     <dimen name="main_view_padding">@dimen/_20sdp</dimen>
-    <dimen name="home_padding">@dimen/_8sdp</dimen>
-
-    <dimen name="itemlist_padding">@dimen/_10sdp</dimen>
-    <dimen name="itemlist_bottom_padding">@dimen/_20sdp</dimen>
-
-    <dimen name="views_space">@dimen/_5sdp</dimen>
-    <dimen name="views_max_space">@dimen/_10sdp</dimen>
-
+    <dimen name="home_view_padding">@dimen/_10sdp</dimen>
+    <!--======================S=================-->
+    <dimen name="text_drawable_padding">@dimen/_2sdp</dimen>
+    <dimen name="text_hint_margin">@dimen/_2sdp</dimen>
+    <!--======================S=================-->
+    <dimen name="view_space">@dimen/_5sdp</dimen>
+    <dimen name="view_max_space">@dimen/_10sdp</dimen>
+    <dimen name="view_min_space">@dimen/_2sdp</dimen>
+    <dimen name="view_bottom_space">@dimen/_30sdp</dimen>
+    <!--======================B=================-->
+    <dimen name="img_info_size">@dimen/_70sdp</dimen>
+    <dimen name="img_action_size">@dimen/_20sdp</dimen>
+    <!--========================S=========================-->
+    <dimen name="search_card_radius">@dimen/_5sdp</dimen>
+    <dimen name="search_card_elevation">@dimen/_5sdp</dimen>
+    <!--========================Title=========================-->
     <dimen name="title_size">@dimen/_12ssp</dimen>
     <dimen name="head_title_size">@dimen/_14ssp</dimen>
-    <dimen name="font_title_size">@dimen/_16ssp</dimen>
-    <dimen name="calender_title_size">@dimen/_20ssp</dimen>
-
-    <dimen name="toolbar_padding">@dimen/_10sdp</dimen>
-
-    <dimen name="progress_bar_size">@dimen/_40sdp</dimen>
-
-    <dimen name="img_user_size">@dimen/_70sdp</dimen>
-    <dimen name="img_action_size">@dimen/_25sdp</dimen>
-    <dimen name="img_pref_size">@dimen/_20sdp</dimen>
-
-    <dimen name="bottom_sheet_peek_height">@dimen/_50sdp</dimen>
-
-    <dimen name="search_card_radius">@dimen/_5sdp</dimen>
-
-    <dimen name="text_drawable_padding">@dimen/_2sdp</dimen>
-
-    <dimen name="check_box_size">@dimen/_40sdp</dimen>
-
+    <dimen name="font_title_size">@dimen/_14ssp</dimen>
+    <!--========================OTHER=========================-->
     <dimen name="note_width">@dimen/_125sdp</dimen>
-
-    <dimen name="floating_btn_size">@dimen/_45sdp</dimen>
-
+    <dimen name="statics_width">@dimen/_145sdp</dimen>
+    <dimen name="check_box_size">@dimen/_40sdp</dimen>
+    <!--========================OTHER=========================-->
+    <dimen name="bottom_sheet_peek_height">@dimen/_50sdp</dimen>
+    <dimen name="progress_bar_size">@dimen/_40sdp</dimen>
+    <!--======================FAB=================-->
+    <dimen name="fab_size">@dimen/_40sdp</dimen>
+    <dimen name="fab_elevation">@dimen/_2sdp</dimen>
 </resources>

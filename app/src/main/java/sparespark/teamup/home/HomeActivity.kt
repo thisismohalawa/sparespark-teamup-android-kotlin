@@ -5,35 +5,28 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import sparespark.teamup.R
-import sparespark.teamup.auh.AuthActivity
+import sparespark.teamup.auth.AuthActivity
+import sparespark.teamup.core.STORAGE_PERMISSION_CODE
 import sparespark.teamup.core.makeToast
-import sparespark.teamup.core.restartActivity
-import sparespark.teamup.core.setToolbarTitleFont
-import sparespark.teamup.core.showSnackBar
 import sparespark.teamup.core.visible
 import sparespark.teamup.core.wrapper.Result
-import sparespark.teamup.data.intentApi.ShareAPIImpl
-import sparespark.teamup.data.service.BackupService
+import sparespark.teamup.data.shareApi.ShareAPIImpl
 import sparespark.teamup.databinding.ActivityHomeBinding
-import sparespark.teamup.home.buildlogic.HomeViewInjector
+import sparespark.teamup.home.buildlogic.HomeActivityInjector
 
-private const val STORAGE_PERMISSION_CODE = 101
 
-class HomeActivity : AppCompatActivity(), HomeViewInteract {
+class HomeActivity : HomeActivityUgly(), HomeActivityInteract {
     private lateinit var hBinding: ActivityHomeBinding
     private lateinit var navController: NavController
-    private lateinit var viewModel: HomeViewModel
+    private lateinit var viewModel: HomeActivityViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,53 +59,27 @@ class HomeActivity : AppCompatActivity(), HomeViewInteract {
 
     private fun setupViewModel() {
         viewModel = ViewModelProvider(
-            owner = this, HomeViewInjector(this.application).provideViewModelFactory()
-        )[HomeViewModel::class.java]
-        viewModel.handleEvent(HomeViewEvent.OnStartGetUser)
+            owner = this, HomeActivityInjector(this.application).provideViewModelFactory()
+        )[HomeActivityViewModel::class.java]
+        viewModel.handleEvent(HomeActivityEvent.OnStartGetUser)
     }
 
-    private fun HomeViewModel.startObserving() {
+    private fun HomeActivityViewModel.startObserving() {
         loading.observe(this@HomeActivity) {
             updateProgressLoad(loading = it)
         }
         error.observe(this@HomeActivity) {
             displayToast(it.asString(this@HomeActivity))
         }
-        actionToolbarTitle.observe(this@HomeActivity, Observer {
+        actionToolbarTitle.observe(this@HomeActivity) {
             updateActionBarTitle((it.uiResource.asString(this@HomeActivity)))
             updateActionBarTitleColor(it.isError)
-        })
+        }
         loginAttempt.observe(this@HomeActivity) {
             startAuthActivity()
         }
         requestPermissionsAttempt.observe(this@HomeActivity) {
             checkWriteStoragePermission()
-        }
-    }
-
-    private fun checkWriteStoragePermission() {
-        if (ContextCompat.checkSelfPermission(
-                this@HomeActivity, android.Manifest.permission.WRITE_EXTERNAL_STORAGE
-            ) == PackageManager.PERMISSION_DENIED
-        ) ActivityCompat.requestPermissions(
-            this@HomeActivity, arrayOf(
-                android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                android.Manifest.permission.READ_EXTERNAL_STORAGE
-            ), STORAGE_PERMISSION_CODE
-        )
-    }
-
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == STORAGE_PERMISSION_CODE) {
-            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) makeToast(
-                getString(R.string.permission_granted_storage)
-            )
-            else makeToast(getString(R.string.permission_denied_storage))
         }
     }
 
@@ -129,9 +96,15 @@ class HomeActivity : AppCompatActivity(), HomeViewInteract {
                 true
             }
 
+            R.id.menu_datasource_pref -> {
+                navController.navigateUp()
+                navController.navigate(R.id.datasourcePreference)
+                true
+            }
+
             R.id.menu_advance_pref -> {
                 navController.navigateUp()
-                navController.navigate(R.id.advancePreferenceView)
+                navController.navigate(R.id.advancedPreferenceView)
                 true
             }
 
@@ -144,36 +117,18 @@ class HomeActivity : AppCompatActivity(), HomeViewInteract {
     override fun displaySnack(msg: String, duration: Int, aMsg: String?, action: (() -> Unit)?) =
         hBinding.contentHome.fragmentContainer.showSnackBar(msg, duration, aMsg, action)
 
-    override fun restartHomeActivity() = restartActivity()
-
-    override fun finishHomeActivity() = finish()
-
     override fun startAuthActivity() = startActivity(
         Intent(this@HomeActivity, AuthActivity::class.java)
     ).also { this@HomeActivity.finish() }
 
-    override fun actionDial(phoneNum: String) {
-        ShareAPIImpl(this@HomeActivity).dial(phoneNum)
+    override fun restartHomeActivity() {
+        val intent: Intent? = applicationContext.packageManager
+            .getLaunchIntentForPackage(applicationContext.packageName)
+        intent?.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
     }
 
-    override fun actionMsgWhatsApp(phoneNum: String) {
-        ShareAPIImpl(this@HomeActivity).messageVieWhatsApp(phoneNum)
-    }
-
-    override fun actionCopyText(text: String) {
-        val result = ShareAPIImpl(this@HomeActivity).copyText(text)
-        if (result is Result.Value) displayToast(getString(R.string.copied))
-    }
-
-    override fun actionShareText(text: String) {
-        ShareAPIImpl(this@HomeActivity).shareText(text)
-    }
-
-    override fun actionDataExport(intentAction: String) {
-        val serviceIntent = Intent(this@HomeActivity, BackupService::class.java)
-        serviceIntent.action = intentAction
-        this@HomeActivity.startService(serviceIntent)
-    }
+    override fun finishHomeActivity() = finish()
 
     override fun updateProgressLoad(loading: Boolean) {
         hBinding.contentHome.progressCircular.visible(loading)
@@ -190,4 +145,32 @@ class HomeActivity : AppCompatActivity(), HomeViewInteract {
             )
         ) else Unit
     }
+
+    override fun actionCopyText(text: String) {
+        val result = ShareAPIImpl(this@HomeActivity).copyText(text)
+        if (result is Result.Value) displayToast(getString(R.string.copied))
+    }
+
+    override fun actionShareText(text: String) {
+        ShareAPIImpl(this@HomeActivity).shareText(text)
+    }
+
+    override fun actionDial(phoneNum: String) {
+        ShareAPIImpl(this@HomeActivity).dial(phoneNum)
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == STORAGE_PERMISSION_CODE) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) makeToast(
+                getString(R.string.permission_granted_storage)
+            )
+            else makeToast(getString(R.string.permission_denied_storage))
+        }
+    }
+
 }

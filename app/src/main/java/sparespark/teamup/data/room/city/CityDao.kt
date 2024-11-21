@@ -16,7 +16,7 @@ interface CityDao {
     suspend fun getList(): List<RoomCity>
 
     @Query("DELETE FROM city_table where id = :cityId")
-    suspend fun deleteCity(cityId:String)
+    suspend fun deleteCity(cityId: String)
 
     @Query("DELETE FROM city_table")
     suspend fun clearData()

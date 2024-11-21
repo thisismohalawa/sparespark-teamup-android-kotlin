@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_nav_graph"
+    app:startDestination="@id/transactionListView">
+
+    <fragment
+        android:id="@+id/transactionListView"
+        android:name="sparespark.teamup.transaction.itemlist.TransactionListView"
+        android:label="TransactionListView"
+        tools:layout="@layout/transactionlist_view">
+        <action
+            android:id="@+id/navigate_to_list_preference"
+            app:destination="@id/transactionListPreference" />
+        <action
+            android:id="@+id/navigate_to_balance_preference"
+            app:destination="@id/transactionBalancePreferenceView" />
+        <action
+            android:id="@+id/navigate_to_item_filter"
+            app:destination="@id/transactionFilterList" />
+        <action
+            android:id="@+id/navigate_to_transaction_details"
+            app:destination="@id/transactionDetailsView" />
+        <action
+            android:id="@+id/navigate_to_note_details"
+            app:destination="@id/noteDetailsView" />
+    </fragment>
+    <fragment
+        android:id="@+id/transactionFilterList"
+        android:name="sparespark.teamup.transaction.filterlist.TransactionFilterList"
+        android:label="TransactionFilterList"
+        tools:layout="@layout/filterlist_view">
+        <argument
+            android:name="search_query"
+            android:defaultValue=''
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/navigate_to_transaction_details"
+            app:destination="@id/transactionDetailsView" />
+        <action
+            android:id="@+id/navigate_to_filter_list_preference"
+            app:destination="@id/transactionFilterListPreference" />
+        <action
+            android:id="@+id/navigate_to_transaction_list"
+            app:destination="@id/transactionListView" />
+    </fragment>
+    <fragment
+        android:id="@+id/transactionDetailsView"
+        android:name="sparespark.teamup.transaction.itemdetails.TransactionDetailsView"
+        android:label="TransactionDetailsView"
+        tools:layout="@layout/transactiondetails_view">
+        <argument
+            android:name="itemId"
+            android:defaultValue=''
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/navigate_to_client"
+            app:destination="@id/clientView" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/stockListView"
+        android:name="sparespark.teamup.stock.itemlist.StockListView"
+        android:label="StockListView"
+        tools:layout="@layout/stocklist_view">
+        <action
+            android:id="@+id/navigate_to_item_filter"
+            app:destination="@id/stockFilterList" />
+        <action
+            android:id="@+id/navigate_to_stock_details"
+            app:destination="@id/stockDetailsView" />
+        <action
+            android:id="@+id/navigate_to_stock_sell"
+            app:destination="@id/stockSellView" />
+        <action
+            android:id="@+id/navigate_to_list_preference"
+            app:destination="@id/stockListPreferenceView" />
+    </fragment>
+    <fragment
+        android:id="@+id/stockDetailsView"
+        android:name="sparespark.teamup.stock.itemdetails.StockDetailsView"
+        android:label="StockDetailsView"
+        tools:layout="@layout/stockdetails_view">
+        <argument
+            android:name="itemId"
+            android:defaultValue=''
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/navigateToProduct"
+            app:destination="@id/productView" />
+    </fragment>
+    <fragment
+        android:id="@+id/stockSellView"
+        android:name="sparespark.teamup.stock.itemsell.StockSellView"
+        android:label="StockSellView"
+        tools:layout="@layout/stocksell_view">
+        <action
+            android:id="@+id/navigateToClient"
+            app:destination="@id/clientView" />
+    </fragment>
+    <fragment
+        android:id="@+id/stockFilterList"
+        android:name="sparespark.teamup.stock.filterlist.StockFilterList"
+        android:label="StockFilterList"
+        tools:layout="@layout/filterlist_view">
+        <argument
+            android:name="search_query"
+            android:defaultValue=''
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/navigate_to_stock_details"
+            app:destination="@id/stockDetailsView" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileView"
+        android:name="sparespark.teamup.userprofile.profile.ProfileView"
+        android:label="ProfileView"
+        tools:layout="@layout/profile_view">
+        <action
+            android:id="@+id/navigateToProfileDetailView"
+            app:destination="@id/profileDetailView" />
+        <action
+            android:id="@+id/navigateToCity"
+            app:destination="@id/cityView" />
+        <action
+            android:id="@+id/navigateToClient"
+            app:destination="@id/clientView" />
+        <action
+            android:id="@+id/navigateToProduct"
+            app:destination="@id/productView" />
+        <action
+            android:id="@+id/navigateToCompany"
+            app:destination="@id/companyView" />
+        <action
+            android:id="@+id/navigateToTeam"
+            app:destination="@id/teamView" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileDetailView"
+        android:name="sparespark.teamup.userprofile.profiledetails.ProfileDetailView"
+        android:label="ProfileDetailView"
+        tools:layout="@layout/profiledetails_view" />
+
+    <fragment
+        android:id="@+id/cityView"
+        android:name="sparespark.teamup.citylist.CityView"
+        android:label="CityView"
+        tools:layout="@layout/expanded_list_view" />
+    <fragment
+        android:id="@+id/clientView"
+        android:name="sparespark.teamup.clientlist.ClientView"
+        android:label="ClientView"
+        tools:layout="@layout/expanded_list_view">
+        <action
+            android:id="@+id/navigateToCity"
+            app:destination="@id/cityView" />
+    </fragment>
+    <fragment
+        android:id="@+id/companyView"
+        android:name="sparespark.teamup.companylist.CompanyView"
+        android:label="CompanyView"
+        tools:layout="@layout/expanded_list_view" />
+    <fragment
+        android:id="@+id/productView"
+        android:name="sparespark.teamup.productlist.ProductView"
+        android:label="ProductView"
+        tools:layout="@layout/expanded_list_view">
+        <action
+            android:id="@+id/navigateToCompany"
+            app:destination="@id/companyView" />
+    </fragment>
+    <fragment
+        android:id="@+id/teamView"
+        android:name="sparespark.teamup.teamlist.TeamView"
+        android:label="TeamView"
+        tools:layout="@layout/expanded_list_view" />
+    <fragment
+        android:id="@+id/cachePreferenceView"
+        android:name="sparespark.teamup.preferences.CachePreferenceView"
+        android:label="CachePreferenceView" />
+    <fragment
+        android:id="@+id/advancedPreferenceView"
+        android:name="sparespark.teamup.preferences.AdvancedPreferenceView"
+        android:label="AdvancedPreferenceView" />
+    <fragment
+        android:id="@+id/noteDetailsView"
+        android:name="sparespark.teamup.notedetails.NoteDetailsView"
+        android:label="NoteDetailsView"
+        tools:layout="@layout/notedetails_view">
+        <argument
+            android:name="noteId"
+            android:defaultValue=''
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/navigateToTransactionList"
+            app:destination="@id/transactionListView" />
+    </fragment>
+    <fragment
+        android:id="@+id/transactionListPreference"
+        android:name="sparespark.teamup.preferences.TransactionListPreference"
+        android:label="TransactionListPreference" />
+    <fragment
+        android:id="@+id/stockListPreferenceView"
+        android:name="sparespark.teamup.preferences.StockListPreferenceView"
+        android:label="StockListPreferenceView" />
+    <fragment
+        android:id="@+id/datasourcePreference"
+        android:name="sparespark.teamup.preferences.DatasourcePreference"
+        android:label="DatasourcePreference" />
+    <fragment
+        android:id="@+id/transactionFilterListPreference"
+        android:name="sparespark.teamup.preferences.TransactionFilterListPreference"
+        android:label="TransactionFilterListPreference" />
+    <fragment
+        android:id="@+id/transactionBalancePreferenceView"
+        android:name="sparespark.teamup.preferences.TransactionBalancePreferenceView"
+        android:label="TransactionBalancePreferenceView" />
+
+
+</navigation>

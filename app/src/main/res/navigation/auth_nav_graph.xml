@@ -2,24 +2,25 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/login_nav_graph"
+    android:id="@+id/auth_nav_graph"
     app:startDestination="@id/loginView">
+
     <fragment
         android:id="@+id/loginView"
-        android:name="sparespark.teamup.auh.login.LoginView"
+        android:name="sparespark.teamup.auth.login.LoginView"
         android:label="LoginView"
         tools:layout="@layout/auth_view">
         <action
-            android:id="@+id/navigate_to_signupView"
-            app:destination="@id/signUpView" />
+            android:id="@+id/navigate_to_signup"
+            app:destination="@id/signupView" />
     </fragment>
     <fragment
-        android:id="@+id/signUpView"
-        android:name="sparespark.teamup.auh.signup.SignUpView"
-        android:label="SignUpView"
+        android:id="@+id/signupView"
+        android:name="sparespark.teamup.auth.signup.SignupView"
+        android:label="SignupView"
         tools:layout="@layout/auth_view">
         <action
-            android:id="@+id/navigate_to_loginView"
+            android:id="@+id/navigate_to_login"
             app:destination="@id/loginView" />
     </fragment>
 </navigation>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory android:title="@string/cache_times">
+    <PreferenceCategory android:title="@string/cache">
         <EditTextPreference
             android:defaultValue="4"
             android:key="CITY_CACHE_TIME"
@@ -12,10 +12,15 @@
             android:summary="@string/set_max_cache_def4h"
             android:title="@string/client_list" />
         <EditTextPreference
-            android:defaultValue="1"
-            android:key="EXPENSE_CACHE_TIME"
-            android:summary="@string/set_max_cache_def1h"
-            android:title="@string/expenses_list" />
+            android:defaultValue="4"
+            android:key="PRODUCT_CACHE_TIME"
+            android:summary="@string/set_max_cache_def4h"
+            android:title="@string/product_list" />
+        <EditTextPreference
+            android:defaultValue="4"
+            android:key="COMPANY_CACHE_TIME"
+            android:summary="@string/set_max_cache_def4h"
+            android:title="@string/company_list" />
         <EditTextPreference
             android:defaultValue="10"
             android:key="NOTE_CACHE_TIME"
@@ -23,18 +28,21 @@
             android:title="@string/notes_list" />
         <EditTextPreference
             android:defaultValue="10"
-            android:key="ITEM_CACHE_TIME"
+            android:key="TRANSACTION_CACHE_TIME"
             android:summary="@string/main_max_cache_time"
-            android:title="@string/exchange_list" />
+            android:title="@string/transaction_list" />
+        <EditTextPreference
+            android:defaultValue="10"
+            android:key="STOCK_CACHE_TIME"
+            android:summary="@string/main_max_cache_time"
+            android:title="@string/stock_list" />
     </PreferenceCategory>
-    <PreferenceCategory android:title="@string/cache_times">
+    <PreferenceCategory>
         <Preference
             android:key="CLEAR CACHE"
-            android:summary="@string/cache_times"
             android:title="@string/clear_cache" />
         <Preference
             android:key="RESET CACHE"
-            android:summary="@string/update"
             android:title="@string/reset_cache" />
     </PreferenceCategory>
 </PreferenceScreen>

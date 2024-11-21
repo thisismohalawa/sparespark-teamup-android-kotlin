@@ -3,8 +3,7 @@ package sparespark.teamup.data.room.user
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-
-const val CURRENT_USER_ID = 0
+import sparespark.teamup.core.internal.CURRENT_USER_ID
 
 @Entity(tableName = "user_table")
 data class RoomUser(

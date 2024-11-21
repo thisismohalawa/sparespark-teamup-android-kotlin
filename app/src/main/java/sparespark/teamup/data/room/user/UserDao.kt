@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import sparespark.teamup.core.internal.CURRENT_USER_ID
 
 @Dao
 interface UserDao {

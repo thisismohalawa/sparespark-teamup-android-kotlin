@@ -7,14 +7,13 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import sparespark.teamup.R
 import sparespark.teamup.core.DELAY_NAV_RESTART
-import sparespark.teamup.core.ROLE_EMPLOYEE
-import sparespark.teamup.core.map.DEACTIVATED
-import sparespark.teamup.core.wrapper.BaseViewModel
+import sparespark.teamup.core.base.BaseViewModel
+import sparespark.teamup.core.internal.DEACTIVATED
+import sparespark.teamup.core.internal.ROLE_EMPLOYEE
 import sparespark.teamup.core.wrapper.Result
-import sparespark.teamup.data.model.User
+import sparespark.teamup.data.model.user.User
 import sparespark.teamup.data.repository.UserRepository
 
-private val TEMP_USER = User("", "tempX", "Temporary.", "", ROLE_EMPLOYEE, DEACTIVATED)
 
 abstract class UserViewModel(
     private val userRepo: UserRepository
@@ -32,10 +31,8 @@ abstract class UserViewModel(
         when (val result = userRepo.getLocalUser()) {
             is Result.Error -> showError(R.string.cannot_read_local_data)
 
-            is Result.Value -> result.value.let {
-                if (it == null) userState.value = TEMP_USER
-                else userState.value = it
-
+            is Result.Value -> {
+                userState.value = result.value ?: tempUser()
                 followAction?.invoke()
             }
         }
@@ -45,4 +42,7 @@ abstract class UserViewModel(
         delay(DELAY_NAV_RESTART)
         updatedState.value = Unit
     }
+
+    private fun tempUser() = User("", "UserName", "Temporary.", "", ROLE_EMPLOYEE, DEACTIVATED)
+
 }

@@ -1,6 +1,5 @@
 package sparespark.teamup.data.model.note
 
-
 data class Note(
     var id: String,
     val title: String,

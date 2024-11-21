@@ -9,27 +9,23 @@ import org.apache.poi.xssf.usermodel.XSSFCellStyle
 import org.apache.poi.xssf.usermodel.XSSFRow
 import org.apache.poi.xssf.usermodel.XSSFSheet
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
-import sparespark.teamup.core.DATE_EXPORT_FORMAT
-import sparespark.teamup.core.toFormatedString
 import sparespark.teamup.core.getCalendarDateTime
-import sparespark.teamup.core.getTotal
+import sparespark.teamup.core.internal.getTotal
+import sparespark.teamup.core.internal.toActiveText
+import sparespark.teamup.core.internal.toFormatedString
+import sparespark.teamup.core.internal.toTypeText
 import sparespark.teamup.core.launchASuspendTaskScope
 import sparespark.teamup.core.wrapper.Result
-import sparespark.teamup.data.model.expense.Expense
-import sparespark.teamup.data.model.item.Item
+import sparespark.teamup.data.model.stock.Stock
+import sparespark.teamup.data.model.transaction.Transaction
 import java.io.File
 import java.io.FileOutputStream
 
-
-internal fun Boolean.toActiveText(): String = if (this) "Active/غير مكتمل" else "Inactive/مكتمل"
-
-internal fun Boolean.toTypeText(): String = if (this) "Sell/بيع" else "Buy/شراء"
-
-internal fun Boolean.toIncomeText(): String = if (this) "Income/دخل" else "Expenses/مصاريف"
-
+private const val DATE_EXPORT_FORMAT = "dd-MM-yyyy-HHmm"
+private const val FILE_NAME = "teamup-backups"
+private const val COL_WIDTH = 12800
 
 class ExcelAPIImpl : ExcelAPI {
-
     private fun XSSFWorkbook.getHeaderCellStyle(): XSSFCellStyle {
         val headerStyle = this.createCellStyle()
         val font = this.createFont()
@@ -48,17 +44,116 @@ class ExcelAPIImpl : ExcelAPI {
         return headerStyle
     }
 
-    override suspend fun buildItemsFile(list: List<Item>?): Result<Exception, Unit> =
+    override suspend fun buildStockListFile(list: List<Stock>): Result<Exception, Unit> =
         Result.build {
             launchASuspendTaskScope {
-                if (list.isNullOrEmpty()) return@launchASuspendTaskScope
+                if (list.isEmpty()) return@launchASuspendTaskScope
                 val strDate = getCalendarDateTime(DATE_EXPORT_FORMAT)
                 val root = File(
                     Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS),
-                    "teamup-backups"
+                    FILE_NAME
+                )
+
+                if (!root.exists()) root.mkdirs()
+                val path = File(root, "/stock-$strDate.xlsx")
+                val workbook = XSSFWorkbook()
+                val outputStream = FileOutputStream(path)
+                val sheet: XSSFSheet = workbook.createSheet("Data-Backup")
+                var row: XSSFRow = sheet.createRow(0)
+                var cell: XSSFCell = row.createCell(0)
+
+                cell.setCellValue("Creation Date")
+                cell.cellStyle = workbook.getHeaderCellStyle()
+
+                cell = row.createCell(1)
+                cell.setCellValue("Product")
+                cell.cellStyle = workbook.getHeaderCellStyle()
+
+
+                cell = row.createCell(2)
+                cell.setCellValue("Datasource")
+                cell.cellStyle = workbook.getHeaderCellStyle()
+
+                cell = row.createCell(3)
+                cell.setCellValue("Size/Pair")
+                cell.cellStyle = workbook.getHeaderCellStyle()
+
+                cell = row.createCell(4)
+                cell.setCellValue("Sell")
+                cell.cellStyle = workbook.getHeaderCellStyle()
+
+                cell = row.createCell(5)
+                cell.setCellValue("Update By")
+                cell.cellStyle = workbook.getHeaderCellStyle()
+
+                cell = row.createCell(6)
+                cell.setCellValue("Update Date")
+                cell.cellStyle = workbook.getHeaderCellStyle()
+
+                cell = row.createCell(7)
+                cell.setCellValue("Note")
+                cell.cellStyle = workbook.getHeaderCellStyle()
+
+                for (i in list.indices) {
+                    row = sheet.createRow(i + 1)
+
+                    cell = row.createCell(0)
+                    cell.setCellValue(list[i].creationDate)
+                    cell.cellStyle = workbook.getSubHeaderCellStyle()
+                    sheet.setColumnWidth(0, COL_WIDTH)
+
+                    cell = row.createCell(1)
+                    cell.setCellValue(list[i].productEntry.name)
+                    cell.cellStyle = workbook.getSubHeaderCellStyle()
+                    sheet.setColumnWidth(1, COL_WIDTH)
+
+
+                    cell = row.createCell(2)
+                    cell.setCellValue(list[i].datasourceId.toString())
+                    cell.cellStyle = workbook.getSubHeaderCellStyle()
+                    sheet.setColumnWidth(2, COL_WIDTH)
+
+                    cell = row.createCell(3)
+                    cell.setCellValue("X")
+                    cell.cellStyle = workbook.getSubHeaderCellStyle()
+                    sheet.setColumnWidth(3, COL_WIDTH)
+
+                    cell = row.createCell(4)
+                    cell.setCellValue(list[i].sell.toTypeText())
+                    cell.cellStyle = workbook.getSubHeaderCellStyle()
+                    sheet.setColumnWidth(4, COL_WIDTH)
+
+                    cell = row.createCell(5)
+                    cell.setCellValue(list[i].updateBy)
+                    cell.cellStyle = workbook.getSubHeaderCellStyle()
+                    sheet.setColumnWidth(5, COL_WIDTH)
+
+                    cell = row.createCell(6)
+                    cell.setCellValue(list[i].updateDate)
+                    cell.cellStyle = workbook.getSubHeaderCellStyle()
+                    sheet.setColumnWidth(6, COL_WIDTH)
+
+                    cell = row.createCell(7)
+                    cell.setCellValue(list[i].note)
+                    cell.cellStyle = workbook.getSubHeaderCellStyle()
+                    sheet.setColumnWidth(7, COL_WIDTH)
+                }
+                workbook.write(outputStream)
+                outputStream.close()
+            }
+        }
+
+    override suspend fun buildTransactionListFile(list: List<Transaction>): Result<Exception, Unit> =
+        Result.build {
+            launchASuspendTaskScope {
+                if (list.isEmpty()) return@launchASuspendTaskScope
+                val strDate = getCalendarDateTime(DATE_EXPORT_FORMAT)
+                val root = File(
+                    Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS),
+                    FILE_NAME
                 )
                 if (!root.exists()) root.mkdirs()
-                val path = File(root, "/items-$strDate.xlsx")
+                val path = File(root, "/transaction-$strDate.xlsx")
                 val workbook = XSSFWorkbook()
                 val outputStream = FileOutputStream(path)
                 val sheet: XSSFSheet = workbook.createSheet("Data-Backup")
@@ -103,32 +198,34 @@ class ExcelAPIImpl : ExcelAPI {
                 cell = row.createCell(9)
                 cell.setCellValue("Note")
                 cell.cellStyle = workbook.getHeaderCellStyle()
+
                 for (i in list.indices) {
                     row = sheet.createRow(i + 1)
+
                     cell = row.createCell(0)
                     cell.setCellValue(list[i].creationDate)
                     cell.cellStyle = workbook.getSubHeaderCellStyle()
-                    sheet.setColumnWidth(0, (50) * 256)
+                    sheet.setColumnWidth(0, COL_WIDTH)
 
                     cell = row.createCell(1)
                     cell.setCellValue(list[i].clientEntry.name + "-" + list[i].clientEntry.city)
                     cell.cellStyle = workbook.getSubHeaderCellStyle()
-                    sheet.setColumnWidth(1, (50) * 256)
+                    sheet.setColumnWidth(1, COL_WIDTH)
 
                     cell = row.createCell(2)
                     cell.setCellValue(list[i].sell.toTypeText())
                     cell.cellStyle = workbook.getSubHeaderCellStyle()
-                    sheet.setColumnWidth(2, (30) * 256)
+                    sheet.setColumnWidth(2, COL_WIDTH)
 
                     cell = row.createCell(3)
                     cell.setCellValue(list[i].assetEntry.assetPrice ?: 0.0)
                     cell.cellStyle = workbook.getSubHeaderCellStyle()
-                    sheet.setColumnWidth(3, (30) * 256)
+                    sheet.setColumnWidth(3, COL_WIDTH)
 
                     cell = row.createCell(4)
                     cell.setCellValue(list[i].assetEntry.quantity ?: 0.0)
                     cell.cellStyle = workbook.getSubHeaderCellStyle()
-                    sheet.setColumnWidth(4, (30) * 256)
+                    sheet.setColumnWidth(4, COL_WIDTH)
 
                     cell = row.createCell(5)
                     cell.setCellValue(
@@ -138,27 +235,27 @@ class ExcelAPIImpl : ExcelAPI {
                         ).toFormatedString()
                     )
                     cell.cellStyle = workbook.getSubHeaderCellStyle()
-                    sheet.setColumnWidth(5, (50) * 256)
+                    sheet.setColumnWidth(5, COL_WIDTH)
 
                     cell = row.createCell(6)
                     cell.setCellValue((list[i].active.toActiveText()))
                     cell.cellStyle = workbook.getSubHeaderCellStyle()
-                    sheet.setColumnWidth(6, (30) * 256)
+                    sheet.setColumnWidth(6, COL_WIDTH)
 
                     cell = row.createCell(7)
                     cell.setCellValue((list[i].updateBy))
                     cell.cellStyle = workbook.getSubHeaderCellStyle()
-                    sheet.setColumnWidth(7, (30) * 256)
+                    sheet.setColumnWidth(7, COL_WIDTH)
 
                     cell = row.createCell(8)
                     cell.setCellValue((list[i].updateDate))
                     cell.cellStyle = workbook.getSubHeaderCellStyle()
-                    sheet.setColumnWidth(8, (50) * 256)
+                    sheet.setColumnWidth(8, COL_WIDTH)
 
                     cell = row.createCell(9)
                     cell.setCellValue((list[i].note))
                     cell.cellStyle = workbook.getSubHeaderCellStyle()
-                    sheet.setColumnWidth(9, (50) * 256)
+                    sheet.setColumnWidth(9, COL_WIDTH)
                 }
 
                 workbook.write(outputStream)
@@ -166,80 +263,4 @@ class ExcelAPIImpl : ExcelAPI {
             }
         }
 
-    override suspend fun buildExpensesFile(list: List<Expense>?): Result<Exception, Unit> =
-        Result.build {
-            launchASuspendTaskScope {
-                if (list.isNullOrEmpty()) return@launchASuspendTaskScope
-                val strDate = getCalendarDateTime(DATE_EXPORT_FORMAT)
-                val root = File(
-                    Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS),
-                    "teamup-backups"
-                )
-                if (!root.exists()) root.mkdirs()
-                val path = File(root, "/expenses-$strDate.xlsx")
-                val workbook = XSSFWorkbook()
-                val outputStream = FileOutputStream(path)
-                val sheet: XSSFSheet = workbook.createSheet("Data-Backup")
-
-                var row: XSSFRow = sheet.createRow(0)
-                var cell: XSSFCell = row.createCell(0)
-
-                cell.setCellValue("Creation Date")
-                cell.cellStyle = workbook.getHeaderCellStyle()
-
-                cell = row.createCell(1)
-                cell.setCellValue("Created By")
-                cell.cellStyle = workbook.getHeaderCellStyle()
-
-                cell = row.createCell(2)
-                cell.setCellValue("Cost")
-                cell.cellStyle = workbook.getHeaderCellStyle()
-
-                cell = row.createCell(3)
-                cell.setCellValue("Note")
-                cell.cellStyle = workbook.getHeaderCellStyle()
-
-                cell = row.createCell(4)
-                cell.setCellValue("Shared With")
-                cell.cellStyle = workbook.getHeaderCellStyle()
-
-                cell = row.createCell(5)
-                cell.setCellValue("Income")
-                cell.cellStyle = workbook.getHeaderCellStyle()
-                for (i in list.indices) {
-                    row = sheet.createRow(i + 1)
-                    cell = row.createCell(0)
-                    cell.setCellValue(list[i].creationDate)
-                    cell.cellStyle = workbook.getSubHeaderCellStyle()
-                    sheet.setColumnWidth(0, (50) * 256)
-
-                    cell = row.createCell(1)
-                    cell.setCellValue(list[i].createdBy)
-                    cell.cellStyle = workbook.getSubHeaderCellStyle()
-                    sheet.setColumnWidth(1, (50) * 256)
-
-                    cell = row.createCell(2)
-                    cell.setCellValue(list[i].cost.toFormatedString())
-                    cell.cellStyle = workbook.getSubHeaderCellStyle()
-                    sheet.setColumnWidth(2, (30) * 256)
-
-                    cell = row.createCell(3)
-                    cell.setCellValue(list[i].note)
-                    cell.cellStyle = workbook.getSubHeaderCellStyle()
-                    sheet.setColumnWidth(3, (30) * 256)
-
-                    cell = row.createCell(4)
-                    cell.setCellValue(list[i].name)
-                    cell.cellStyle = workbook.getSubHeaderCellStyle()
-                    sheet.setColumnWidth(4, (30) * 256)
-
-                    cell = row.createCell(5)
-                    cell.setCellValue(list[i].income.toIncomeText())
-                    cell.cellStyle = workbook.getSubHeaderCellStyle()
-                    sheet.setColumnWidth(5, (50) * 256)
-                }
-                workbook.write(outputStream)
-                outputStream.close()
-            }
-        }
 }

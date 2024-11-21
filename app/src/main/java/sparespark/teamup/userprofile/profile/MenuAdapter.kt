@@ -9,16 +9,16 @@ import sparespark.teamup.R
 import sparespark.teamup.core.setCustomColor
 import sparespark.teamup.core.setCustomImage
 import sparespark.teamup.core.visible
-import sparespark.teamup.data.model.IMenu
-import sparespark.teamup.databinding.ItemHeaderBinding
+import sparespark.teamup.data.model.ProfileMenu
+import sparespark.teamup.databinding.ItemSimpleHeaderBinding
 import sparespark.teamup.userprofile.UserEvent
 
 class MenuAdapter(
-    val list: List<IMenu>,
+    val list: List<ProfileMenu>,
     val event: MutableLiveData<UserEvent> = MutableLiveData()
 ) : RecyclerView.Adapter<MenuAdapter.MenuViewHolder>() {
 
-    inner class MenuViewHolder(var binding: ItemHeaderBinding) : ViewHolder(
+    inner class MenuViewHolder(var binding: ItemSimpleHeaderBinding) : ViewHolder(
         binding.root
     )
 
@@ -26,26 +26,25 @@ class MenuAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuViewHolder =
         MenuViewHolder(
-            ItemHeaderBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemSimpleHeaderBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         )
 
     override fun onBindViewHolder(holder: MenuViewHolder, position: Int) {
-        val iMenu = list[position]
-        with(holder) {
-            with(binding) {
-                imgAction.visible(isVisible = iMenu.isNav)
-                itemView.context.let {
-                    imgAction.setCustomImage(R.drawable.ic_arrow_nav, it)
+        val menu = list[position]
+        val iContext = holder.itemView.context
+        with(holder.binding) {
+            imgAction.setCustomImage(R.drawable.ic_arrow_nav, iContext)
 
-                    txtTitle.text = it.getString(iMenu.title)
-                    if (iMenu.isRedColored) txtTitle.setCustomColor(R.color.red, it)
+            txtTitle.text = iContext.getString(menu.title)
+            txtSubtitle.text = menu.des?.let { iContext.getString(it) }
 
-                    if (iMenu.des != null) txtSubtitle.text = it.getString(iMenu.des)
-                    else txtSubtitle.visible(false)
-                }
-            }
-            itemView.setOnClickListener {
-                event.value = UserEvent.OnMenuItemClick(iMenu.id)
+            imgAction.visible(isVisible = menu.isNav)
+            txtSubtitle.visible(isVisible = menu.des != null)
+
+            if (menu.isRedColored) txtTitle.setCustomColor(R.color.red, iContext)
+
+            holder.itemView.setOnClickListener {
+                event.value = UserEvent.OnMenuItemClick(menu.id)
             }
         }
     }

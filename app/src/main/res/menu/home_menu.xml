@@ -2,9 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/menu_datasource_pref"
+        android:menuCategory="secondary"
+        android:title="@string/datasource"
+        app:showAsAction="never" />
+    <item
         android:id="@+id/menu_cache_pref"
         android:menuCategory="secondary"
-        android:title="@string/cache_times"
+        android:title="@string/cache"
         app:showAsAction="never" />
     <item
         android:id="@+id/menu_advance_pref"

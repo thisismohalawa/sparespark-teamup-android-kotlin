@@ -1,7 +1,7 @@
 package sparespark.teamup.data.model.team
 
-import sparespark.teamup.core.ROLE_EMPLOYEE
-import sparespark.teamup.core.map.DEACTIVATED
+import sparespark.teamup.core.internal.DEACTIVATED
+import sparespark.teamup.core.internal.ROLE_EMPLOYEE
 
 
 data class RemoteTeam(

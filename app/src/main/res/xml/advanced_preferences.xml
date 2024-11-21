@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="@string/advance_features">
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="USE_STATICS"
+            android:summary="@string/statics_summary"
+            android:title="@string/use_statics" />
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="USE_BALANCE"
+            android:summary="@string/balance_summary"
+            android:title="@string/use_balance" />
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="USE_NOTES"
+            android:summary="@string/notes_summary"
+            android:title="@string/use_notes" />
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="SUGGEST_ADD"
+            android:summary="@string/add_summary"
+            android:title="@string/suggest_add" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="SUGGEST_SHARE"
+            android:summary="@string/share_summary"
+            android:title="@string/suggest_share" />
+    </PreferenceCategory>
+</PreferenceScreen>

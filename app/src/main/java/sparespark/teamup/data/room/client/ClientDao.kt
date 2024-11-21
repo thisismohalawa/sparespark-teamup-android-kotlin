@@ -4,7 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import sparespark.teamup.data.model.client.LocationEntry
+import sparespark.teamup.data.model.LocationEntry
 
 @Dao
 interface ClientDao {
@@ -23,7 +23,4 @@ interface ClientDao {
 
     @Query("SELECT location_entry FROM client_table  where name = :name")
     suspend fun getClientLocationByName(name: String): LocationEntry?
-
-    @Query("SELECT id FROM client_table  where name = :name")
-    suspend fun getClientIdByName(name: String): String?
 }

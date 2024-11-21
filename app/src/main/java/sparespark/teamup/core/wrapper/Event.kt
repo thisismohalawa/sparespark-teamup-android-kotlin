@@ -1,6 +1,5 @@
 package sparespark.teamup.core.wrapper
 
-
 open class Event<out T>(private val content: T) {
 
     @Suppress("MemberVisibilityCanBePrivate")
@@ -17,6 +16,4 @@ open class Event<out T>(private val content: T) {
     }
 
     fun peekContent(): T = content
-    // https://stackoverflow.com/a/60624020/25779837
 }
-

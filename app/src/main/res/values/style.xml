@@ -7,11 +7,32 @@
         <item name="android:orientation">vertical</item>
     </style>
 
-    <style name="_paddingMatchVertical" parent="_matchVertical">
-        <item name="android:paddingTop">@dimen/views_max_space</item>
+    <style name="_wrapVertical" parent="_matchVertical">
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="_mainPaddingMatchVertical" parent="_matchVertical">
+        <item name="android:paddingTop">@dimen/view_max_space</item>
         <item name="android:paddingStart">@dimen/main_view_padding</item>
         <item name="android:paddingEnd">@dimen/main_view_padding</item>
     </style>
+
+    <style name="_homePaddingMatchVertical" parent="_matchVertical">
+        <item name="android:paddingTop">@dimen/view_max_space</item>
+        <item name="android:paddingStart">@dimen/home_view_padding</item>
+        <item name="android:paddingEnd">@dimen/home_view_padding</item>
+    </style>
+    <!--========================Container=========================-->
+
+    <style name="_grayContainer" parent="_wrapVertical">
+        <item name="android:background">@drawable/item_rounded_layout_gray</item>
+        <item name="android:padding">@dimen/home_view_padding</item>
+    </style>
+
+    <style name="_greenContainer" parent="_grayContainer">
+        <item name="android:background">@drawable/item_rounded_layout_green</item>
+    </style>
+    <!--========================Title=========================-->
 
     <style name="_title">
         <item name="android:layout_width">wrap_content</item>
@@ -27,13 +48,9 @@
         <item name="android:textColor">?attr/colorOnSecondary</item>
     </style>
 
-    <style name="_fontTitle" parent="_headTitle">
-        <item name="android:fontFamily">@font/tango_bold</item>
+    <style name="_fontTitle" parent="_title">
         <item name="android:textSize">@dimen/font_title_size</item>
-    </style>
-
-    <style name="_darkBoldTitle" parent="_title">
-        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/tango_bold</item>
         <item name="android:textColor">@color/dark</item>
     </style>
 
@@ -41,12 +58,13 @@
         <item name="android:textColor">@color/dark</item>
     </style>
 
-    <style name="_noteTitle" parent="_title">
-        <item name="android:textColor">@color/violet</item>
+    <style name="_darkBoldTitle" parent="_title">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/dark</item>
     </style>
 
     <style name="_numTitle" parent="_title">
-        <item name="android:textSize">@dimen/font_title_size</item>
+        <item name="android:textSize">@dimen/head_title_size</item>
         <item name="android:drawablePadding">@dimen/text_drawable_padding</item>
         <item name="android:gravity">center</item>
         <item name="android:ellipsize">end</item>
@@ -57,75 +75,10 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="_wrapVertical" parent="_matchVertical">
-        <item name="android:layout_height">wrap_content</item>
+    <style name="_noteTitle" parent="_title">
+        <item name="android:textColor">@color/violet</item>
     </style>
-
-    <style name="_grayContainer" parent="_wrapVertical">
-        <item name="android:background">@drawable/item_rounded_layout_gray</item>
-        <item name="android:padding">@dimen/home_padding</item>
-    </style>
-
-    <style name="_greenContainer" parent="_grayContainer">
-        <item name="android:background">@drawable/item_rounded_layout_green</item>
-    </style>
-
-    <style name="_weightedItem">
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:textColor">@color/light_gray</item>
-    </style>
-
-    <style name="_endedActionImg">
-        <item name="android:layout_height">@dimen/img_action_size</item>
-        <item name="android:layout_width">@dimen/img_action_size</item>
-        <item name="android:layout_alignParentEnd">true</item>
-        <item name="android:layout_centerInParent">true</item>
-    </style>
-
-    <style name="_endedSwitch">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_gravity">end</item>
-        <item name="android:layout_centerInParent">true</item>
-        <item name="android:layout_alignParentEnd">true</item>
-        <item name="android:minWidth">0dp</item>
-        <item name="android:minHeight">0dp</item>
-    </style>
-
-    <style name="_endedImgMenu" parent="_endedActionImg">
-        <item name="android:src">@drawable/ic_menu</item>
-    </style>
-
-    <style name="_endedImgPref" parent="_endedActionImg">
-        <item name="android:src">@drawable/ic_settings</item>
-    </style>
-
-    <style name="_progressBar">
-        <item name="android:layout_width">@dimen/progress_bar_size</item>
-        <item name="android:layout_height">@dimen/progress_bar_size</item>
-        <item name="android:layout_gravity">center</item>
-        <item name="android:layout_centerInParent">true</item>
-        <item name="android:visibility">invisible</item>
-    </style>
-
-    <style name="_spinnerItem">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@drawable/item_border_gray</item>
-        <item name="android:padding">@dimen/views_space</item>"
-        <item name="android:visibility">invisible</item>
-    </style>
-
-    <style name="_navView" parent="Widget.Design.BottomNavigationView">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">?attr/colorOnPrimary</item>
-        <item name="android:layout_alignParentBottom">true</item>
-        <item name="android:layout_centerInParent">true</item>
-    </style>
-
+    <!--========================Inputs=========================-->
     <style name="_bottomSheetModal" parent="@style/Widget.Design.BottomSheet.Modal">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -166,14 +119,55 @@
         <item name="android:textColor">@color/violet</item>
     </style>
 
-    <style name="_floatingBtn">
-        <item name="android:layout_width">@dimen/floating_btn_size</item>
-        <item name="android:layout_height">@dimen/floating_btn_size</item>
+    <style name="_endedSwitch">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">end</item>
+        <item name="android:layout_centerInParent">true</item>
         <item name="android:layout_alignParentEnd">true</item>
-        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:minHeight">0dp</item>
+    </style>
+
+    <style name="_progressBar">
+        <item name="android:layout_width">@dimen/progress_bar_size</item>
+        <item name="android:layout_height">@dimen/progress_bar_size</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:visibility">invisible</item>
+    </style>
+    <!--========================Title=========================-->
+    <style name="_endedActionImg">
+        <item name="android:layout_height">@dimen/img_action_size</item>
+        <item name="android:layout_width">@dimen/img_action_size</item>
+        <item name="android:layout_alignParentEnd">true</item>
+        <item name="android:layout_centerInParent">true</item>
+    </style>
+
+    <style name="_endedImgMenu" parent="_endedActionImg">
+        <item name="android:src">@drawable/ic_menu</item>
+    </style>
+
+    <style name="_spinnerItem">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/item_border_gray</item>
+        <item name="android:padding">@dimen/view_max_space</item>"
+        <item name="android:layout_marginBottom">@dimen/view_space</item>"
+        <item name="android:visibility">gone</item>
+    </style>
+
+    <style name="_floatingBtn">
+        <item name="android:layout_width">@dimen/fab_size</item>
+        <item name="android:layout_height">@dimen/fab_size</item>
         <item name="android:clickable">true</item>
         <item name="android:focusable">true</item>
         <item name="android:backgroundTint">@color/violet</item>
-        <item name="android:layout_margin">@dimen/views_space</item>
+    </style>
+
+    <style name="_endedBottomFloatingBtn" parent="_floatingBtn">
+        <item name="android:layout_alignParentEnd">true</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_marginEnd">@dimen/home_view_padding</item>
     </style>
 </resources>

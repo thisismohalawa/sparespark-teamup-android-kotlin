@@ -1,7 +1,7 @@
 package sparespark.teamup.data.repository
 
 import sparespark.teamup.core.wrapper.Result
-import sparespark.teamup.data.model.User
+import sparespark.teamup.data.model.user.User
 
 interface UserRepository {
     suspend fun getLocalUser(): Result<Exception, User?>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="@string/stock_list">
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="STOCK_FILTER_ACTIVE"
+            android:summary="@string/filter_by_sell_summary"
+            android:title="@string/filter_by_sell" />
+    </PreferenceCategory>
+</PreferenceScreen>

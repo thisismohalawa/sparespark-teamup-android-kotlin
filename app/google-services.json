@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "924665828073-m18pns3rke0l1j3hv9t7j2tq9c4g0m7v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "sparespark.teamup",
+            "certificate_hash": "65cc051e38305d1e96614c3abd2e1a48f6493d20"
+          }
+        },
+        {
           "client_id": "924665828073-jlk8gak3sv41s2gdrvtve845v49vith8.apps.googleusercontent.com",
           "client_type": 3
         }

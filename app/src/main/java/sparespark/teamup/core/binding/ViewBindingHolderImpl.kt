@@ -26,10 +26,6 @@ open class ViewBindingHolderImpl<T : ViewBinding> : ViewBindingHolder<T>, Lifecy
         return binding.root
     }
 
-    /*
-    * @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
-    * To not leak memory we nullify the binding when the view is destroyed.
-    * */
     override fun destroyBinding() {
         lifecycle?.removeObserver(this)
         lifecycle = null

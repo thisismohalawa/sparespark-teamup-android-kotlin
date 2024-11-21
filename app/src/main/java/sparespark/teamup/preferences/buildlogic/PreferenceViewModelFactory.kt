@@ -2,9 +2,8 @@ package sparespark.teamup.preferences.buildlogic
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import sparespark.teamup.data.remider.ReminderAPI
+import sparespark.teamup.data.reminder.ReminderAPI
 import sparespark.teamup.data.repository.PreferenceRepository
-import sparespark.teamup.preferences.base.PreferenceViewModel
 
 class PreferenceViewModelFactory(
     private val preferenceRepo: PreferenceRepository,

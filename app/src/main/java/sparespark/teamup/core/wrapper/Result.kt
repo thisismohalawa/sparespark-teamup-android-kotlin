@@ -1,8 +1,5 @@
 package sparespark.teamup.core.wrapper
 
-import android.util.Log
-
-
 sealed class Result<out E, out V> {
 
     data class Value<out V>(val value: V) : Result<Nothing, V>()
@@ -13,7 +10,6 @@ sealed class Result<out E, out V> {
             try {
                 Value(function.invoke())
             } catch (e: java.lang.Exception) {
-                Log.d("TAG_result_build", "build: ${e.message}")
                 Error(e)
             }
     }

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="@string/transaction_list">
+        <SwitchPreference
+            android:defaultValue="false"
+            android:icon="@drawable/ic_arrow_sell"
+            android:key="USE_BACKUP"
+            android:summary="@string/backup_summary"
+            android:title="@string/use_backups" />
+    </PreferenceCategory>
+</PreferenceScreen>

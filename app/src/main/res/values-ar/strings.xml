@@ -1,10 +1,188 @@
 <resources>
-    <string name="app_name">Teamup</string>
+    <string name="app_name">TeamupApp</string>
     <string name="home">الرئيسية</string>
+
+    <!--City-->
+    <string name="city_name">أسم المدينة</string>
+    <string name="city_list">قائمة المدن</string>
+    <string name="select_city">أختر مدينة</string>
+    <string name="search_for_city">أبحث عن المدينة أو الولاية أو موقع العمل.</string>
+    <string name="empty_city_list">قائمة المدن فارغة.</string>
+    <string name="error_retrieve_citylist">خطأ في أستردادالمدن.</string>
+
+    <!--Client-->
+    <string name="client">العميل</string>
+    <string name="client_list">قائمة العملاء</string>
+    <string name="select_client">أختر عميل</string>
+    <string name="empty_client_list">قائمة العملاء فارغة.</string>
+    <string name="search_clients">أبحث عن العملاء حسب الأسم أو الهاتف أو موقع العمل.</string>
+    <string name="error_retrieve_clientlist">خطأ في أسترداد بيانات العملاء.</string>
+
+    <!--Company-->
+    <string name="company">شركة</string>
+    <string name="company_list">قائمة الشركات</string>
+    <string name="select_company">أختر شركة</string>
+    <string name="empty_company_list">قائمة الشركات فارغة.</string>
+    <string name="search_companies">أبحث عن شركة حسب الأسم أو موقع العمل.</string>
+    <string name="error_retrieve_companylist">خطأ في أسترداد بيانات الشركة.</string>
+
+    <!--Product-->
+    <string name="product">منتج</string>
+    <string name="product_list">قائمات المنتجات</string>
+    <string name="select_product">أختر منتج</string>
+    <string name="empty_product_list">قائمة المنتجات فارغة.</string>
+    <string name="search_products">أبحث عن منتج</string>
+    <string name="error_retrieve_productlist">خطأ في أسترداد المنتجات.</string>
+
+    <!--Team-->
+    <string name="team_list">فريق</string>
+    <string name="team_summary">تفعيل وإلغاء تفعيل الفريق.</string>
+    <string name="search_for_user">أبحث عن مستخدم.</string>
+    <string name="error_retrieve_team">خطأ في أسترداد بيانات الفريق.</string>
+
+    <!--Note-->
+    <string name="notes_list">قائمة الملاحظات</string>
+    <string name="note">ملاحظة</string>
+    <string name="error_retrieve_notelist">خطأ في أستردادالملاحظات.</string>
+
+    <!--Transaction-->
+    <string name="transactions">المعاملات</string>
+    <string name="transaction_list">قائمة المعاملات</string>
+    <string name="error_retrieve_itemlist">خطأ في أستردادالمعاملات.</string>
+    <string name="update_transaction">أضافة معاملة</string>
+
+    <!--Stock-->
+    <string name="stock">الخزنة</string>
+    <string name="stock_list">الخزنة</string>
+    <string name="error_retrieve_stocklist">خطأ في أسترداد بيانات الخزنة.</string>
+    <string name="update_stock">أضافة عنصر</string>
+
+
+    <!--Calender-->
+    <string name="today">اليوم</string>
+    <string name="yesterday">الأمس</string>
+    <string name="this_month">الشهر الحالي</string>
+    <string name="all_time">الكل</string>
 
     <!--Permission-->
     <string name="permission_granted_storage">تم منح إذن الوصول للذاكرة</string>
     <string name="permission_denied_storage">لم يتم منح إذن الوصول للذاكرة</string>
+
+    <!--Auth-->
+    <string name="connecting">يتصل…</string>
+    <string name="unauthorized">غير معتمد.</string>
+    <string name="setup_sync">إعداد المزامنة.</string>
+    <string name="synced_success">تم مزامنة المستخدم بنجاح.</string>
+    <string name="error_user_syncing">خطأ أثناء مزامنة المستخدم.</string>
+    <string name="unauth_summary">غير معتمد به. يتم استخدام قاعدة بيانات محلية.</string>
+    <string name="check_auth_user">التحقق من وجود مستخدم معتمد…</string>
+
+    <!--Remote Server-->
+    <string name="server">الخادم</string>
+    <string name="datasource">مصدر البيانات</string>
+    <string name="use_remote_server">أستخدم خادمًا خاص.</string>
+    <string name="server_summary">استخدم خادمنا البعيد لمشاركة البيانات مع فريقك، وتتبع رصيدك، وإدارة شؤونك المالية.</string>
+    <string name="read_remote_user">التحقق من المستخدم…</string>
+    <string name="server_disabled">الخادم معطل.</string>
+    <string name="no_internet">لايوجد أتصال بالأنترنت.</string>
+
+    <!--Backups-->
+    <string name="use_backups">السماح بالنسخ التلقائي للبيانات.</string>
+    <string name="backup_summary">أسمح للتطبيق بأسترداد نسخة أحتياطية للبيانات كل وقت محدد.</string>
+    <string name="backup_setup">تم إعداد النسخ الأحتياطي للنسخ الأحتياطي التلقائي للبيانات.</string>
+    <string name="backup_canceled">إلغاء النسخ الاحتياطي.</string>
+    <string name="error_set_backup_alarm">خطأ أثناء إعداد النسخ الأحتياطية للبيانات.</string>
+    <string name="error_data_backup">حدث خطأ أثناء النسخ الأحتياطي للبيانات.</string>
+    <string name="data_backup">النسخ التلقائي للبيانات.</string>
+    <string name="start_backup">بدأ النسخ التلقائي للبيانات…</string>
+
+    <!--Export-->
+    <string name="exporting">جاري تصدير البيانات…</string>
+    <string name="export_list">تصدير نسخة البيانات </string>
+    <string name="export_success">.تم تصدير البيانات.</string>
+    <string name="export_summary">قم بتصدير نسخة من قائمة البيانات الخاصة بك كملف Excel أحتياطي.</string>
+
+    <!--Statics-->
+    <string name="calculating">جاري حساب…</string>
+    <string name="use_statics">عرض الإحصائيات.</string>
+    <string name="statics_summary">استخدم الإحصائيات المباشرة لحساب إجمالي البيانات تلقائيًا.</string>
+    <string name="cannot_read_statistics">لا يمكن قراءة الإحصائيات.</string>
+
+    <!--Balance-->
+    <string name="total_balance">الرصيد الكلي</string>
+    <string name="use_balance">حساب رصيد الكلي.</string>
+    <string name="balance_summary">استخدم رصيد الكلي لحساب إجمالي البيانات تلقائيًا.</string>
+    <string name="balance_today">رصيد عناصر اليوم فقط.</string>
+    <string name="balance_active">رصيد العناصر النشطة فقط.</string>
+
+    <!--Error-->
+    <string name="deactivated">تم تعطيله.</string>
+    <string name="disable">تم أيقافه.</string>
+    <string name="not_permitted">غير مسموح به.</string>
+    <string name="unable_to_sign_out">تعذر إكمال عملية تسجيل الخروج.</string>
+    <string name="unable_to_sign_in">تعذر إكمال عملية تسجيل الدخول.</string>
+    <string name="unable_to_sign_up">تعذر إكمال عملية تسجيل المستخدم.</string>
+    <string name="cannot_find_auth_user">تعذر العثور على مستخدم مسجل.</string>
+    <string name="cannot_read_local_data">لا يمكن قراءة البيانات المحلية.</string>
+    <string name="cannot_read_remote_data">لا يمكن قراءة البيانات البعيدة.</string>
+    <string name="cannot_update_remote_data">لا يمكن تحديث البيانات البعيدة.</string>
+    <string name="cannot_update_local_entries">لا يمكن تحديث البيانات المحلية.</string>
+    <string name="cannot_update_entries">لا يمكن تحديث البيانات.</string>
+    <string name="error_retrieve_data">خطأ في استردادالبيانات.</string>
+
+    <!--Other-->
+    <string name="update">تحديث</string>
+    <string name="update_item">تحديث البيانات</string>
+    <string name="update_profile">تحديث البيانات</string>
+    <string name="update_by">تحديث بواسطة</string>
+    <string name="updated_success">تم التحديث بنجاح</string>
+    <string name="update_summary">قراءة وتحديث وحذف البيانات.</string>
+
+    <!--Asset-->
+    <string name="le">عملة</string>
+    <string name="un">وحدة</string>
+    <string name="avr">م</string>
+    <string name="buy">شراء</string>
+    <string name="sell">بيع</string>
+    <string name="total_price">السعر الكلي</string>
+    <string name="price">السعر</string>
+    <string name="quantity">الكمية</string>
+    <string name="cost">مبلغ</string>
+
+    <!--Other-->
+    <string name="expand">عرض القائمة</string>
+    <string name="view_item">عرض العنصر</string>
+    <string name="refresh_list">تحديث القائمة</string>
+    <string name="uncompleted">غير مكتمل</string>
+
+
+    <!--ItemDetails-->
+    <string name="add">أضافة</string>
+    <string name="confirm">تأكيد</string>
+    <string name="temporary">مؤقت</string>
+    <string name="admins_only">مدير فقط</string>
+    <string name="delete_permanently">حذف نهائيا؟</string>
+    <string name="push_item">نقل إلى القائمة الرئيسية؟</string>
+
+    <!--Search-->
+    <string name="search">بحث</string>
+    <string name="search_by_date">أبحث حسب تاريخ الإنشاء أو التحديث…</string>
+    <string name="empty">فارغ.</string>
+
+    <!--Profile-->
+    <string name="profile">الملف الشخصي</string>
+    <string name="user_name">أسم المستخدم</string>
+    <string name="phone_number">رقم الهاتف</string>
+    <string name="owner">مالك</string>
+    <string name="admin">مدير</string>
+    <string name="team">فريق</string>
+
+    <!--Invalid-->
+    <string name="invalid">غير صالح.</string>
+    <string name="invalid_name">غير صالح.</string>
+    <string name="invalid_cost">غير صالح.</string>
+    <string name="invalid_phone_num">رقم الهاتف غير صالح.</string>
+    <string name="invalid_phone_num_format">تنسيق رقم الهاتف غير صالح.</string>
 
     <!--Login-->
     <string name="or">أو</string>
@@ -18,197 +196,41 @@
     <string name="create_account">أنشئ مستخدم جديد؟</string>
     <string name="signed_in_success">تم التسجيل بنجاح.</string>
 
-    <!--Export-->
-    <string name="exporting">جاري تصدير نسخة…</string>
-    <string name="export_list">تصدير نسخة البيانات </string>
-    <string name="export_success">.تم تصدير البيانات.</string>
-    <string name="export_summary">قم بتصدير نسخة من قائمة البيانات الخاصة بك كملف Excel احتياطي.</string>
-
-    <!--Backups-->
-    <string name="use_backups">السماح بالنسخ التلقائي للبيانات.</string>
-    <string name="backup_summary">اسمح للتطبيق بتحميل نسخة احتياطية للبيانات في كل وقت محدد.</string>
-    <string name="backup_setup">تم إعداد النسخ الاحتياطي للنسخ الاحتياطي التلقائي للبيانات.</string>
-    <string name="backup_canceled">إلغاء النسخ الاحتياطي.</string>
-    <string name="error_set_backup_alarm">خطأ أثناء إعداد النسخ الاحتياطية للبيانات.</string>
-    <string name="erro_data_backup">حدث خطأ أثناء النسخ الاحتياطي للبيانات.</string>
-    <string name="data_backup">النسخ التلقائي للبيانات.</string>
-    <string name="start_backup">بدأ النسخ التلقائي للبيانات…</string>
-
-    <!--Statics-->
-    <string name="total_balance">الرصيد الكلي</string>
-    <string name="calculating">جاري حساب…</string>
-    <string name="use_statics">عرض الإحصائيات.</string>
-    <string name="statics_summary">استخدم الإحصائيات المباشرة لحساب إجمالي بيانات الأصول تلقائيًا.</string>
-    <string name="today_statics">إحصائيات اليوم فقط.</string>
-    <string name="active_statics">إحصائيات النشط فقط.</string>
-    <string name="cannot_read_statistics">لا يمكن قراءة الإحصائيات.</string>
-
-    <!--Auth-->
-    <string name="connecting">يتصل…</string>
-    <string name="unauthorized">غير معتمد.</string>
-    <string name="setup_sync">إعداد المزامنة.</string>
-    <string name="synced_success">تم مزامنة المستخدم بنجاح.</string>
-    <string name="error_user_syncing">خطأ أثناء مزامنة المستخدم.</string>
-    <string name="unauth_summary">غير معتمد به. يتم استخدام قاعدة بيانات محلية.</string>
-    <string name="check_auth_user">التحقق من وجود مستخدم معتمد…</string>
-
-    <!--Remote Server-->
-    <string name="server">الخادم</string>
-    <string name="data_source">مصدر البيانات</string>
-    <string name="use_remote_server">استخدم خادمًا خاص.</string>
-    <string name="server_summary">استخدم خادمنا البعيد لمشاركة البيانات مع فريقك، وتتبع رصيدك، وإدارة شؤونك المالية.</string>
-    <string name="read_remote_user">التحقق من المستخدم…</string>
-    <string name="server_disabled">الخادم معطل.</string>
-    <string name="no_internet">لايوجد أتصال بالأنترنت.</string>
-
-    <!--Error-->
-    <string name="deactivated">تم تعطيله.</string>
-    <string name="disable">تم أيقافه.</string>
-    <string name="not_permitted">غير مسموح به.</string>
-    <string name="unable_to_sign_out">تعذر إكمال عملية تسجيل الخروج.</string>
-    <string name="unable_to_sign_in">تعذر إكمال عملية تسجيل الدخول.</string>
-    <string name="unable_to_sign_up">تعذر إكمال عملية تسجيل المستخدم.</string>
-    <string name="cannot_find_auth_user">تعذر العثور على مستخدم مسجل.</string>
-
-    <string name="cannot_read_local_data">لا يمكن قراءة البيانات المحلية.</string>
-    <string name="cannot_read_remote_data">لا يمكن قراءة البيانات البعيدة.</string>
-    <string name="cannot_update_remote_data">لا يمكن تحديث البيانات البعيدة.</string>
-    <string name="cannot_update_local_entries">لا يمكن تحديث البيانات المحلية.</string>
-    <string name="cannot_update_entries">لا يمكن تحديث البيانات.</string>
-    <string name="error_retrieve_data">خطأ في استردادالبيانات.</string>
-    <string name="error_retrieve_clientlist">خطأ في استرداد بيانات العملاء.</string>
-    <string name="error_retrieve_citylist">خطأ في استردادالمدن.</string>
-    <string name="error_retrieve_team">خطأ في استرداد بيانات الفريق.</string>
-    <string name="error_retrieve_notelist">خطأ في استردادالملاحظات.</string>
-    <string name="error_retrieve_itemlist">خطأ في استردادالبيانات.</string>
-
-    <!--Inputs-->
-    <string name="required">(مطلوب)</string>
-    <string name="invalid">غير صالح.</string>
-    <string name="invalid_name">غير صالح.</string>
-    <string name="invalid_cost">غير صالح.</string>
-    <string name="invalid_phone_num">رقم الهاتف غير صالح.</string>
-    <string name="invalid_phone_num_format">تنسيق رقم الهاتف غير صالح.</string>
-
     <!--Data Cache-->
     <string name="cached">مخزن مؤقتا</string>
-    <string name="cache_times">التخزين المؤقت</string>
+    <string name="cache">التخزين المؤقت</string>
     <string name="reset_cache">إعادة ضبط وقت التخزين</string>
-    <string name="clear_cache">مسح ذاكرة التخزين المؤقت</string>
-    <string name="main_max_cache_time">تعيين الحد الأقصى لوقت التخزين المؤقت لقائمة العناصر الرئيسية للتخزين المحلي،الافتراضي هو 10 دقائق.</string>
-    <string name="set_max_cache_def4h">تعيين الحد الأقصى لوقت التخزين المؤقت للتخزين المحلي،الافتراضي هو 4 ساعات.</string>
-    <string name="set_max_cache_def1h">تعيين الحد الأقصى لوقت التخزين المؤقت للتخزين المحلي،الافتراضي هو ساعة واحدة.</string>
+    <string name="clear_cache">حذف ذاكرة التخزين المؤقت</string>
+    <string name="main_max_cache_time">تعيين الحد الأقصى لوقت التخزين المؤقت لقائمة العناصر الرئيسية،الأفتراضي هو 10 دقائق.</string>
+    <string name="set_max_cache_def4h">تعيين الحد الأقصى لوقت التخزين المؤقت  لقائمة العناصر الرئيسية،الأفتراضي هو 4 ساعات.</string>
+    <string name="set_max_cache_def1h">تعيين الحد الأقصى لوقت التخزين المؤقت لقائمة العناصر الرئيسية،الأفتراضي هو ساعة واحدة.</string>
 
     <!--Advance Cache-->
-    <string name="advance_features">الميزات المتقدمة</string>
-    <string name="user_calender_statics">استخدم إحصائيات التقويم.</string>
-    <string name="user_notes">استخدم ملاحظات العمل.</string>
+    <string name="advance_features">المميزات المتقدمة</string>
+    <string name="use_notes">أستخدم ملاحظات العمل.</string>
     <string name="notes_summary">إنشاء وتحديث وحذف الملاحظات لفريقك.</string>
     <string name="suggest_add">أقتراح تلقائي لإضافة البيانات.</string>
     <string name="suggest_share">أقتراح تلقائي لمشاركة البيانات.</string>
-    <string name="add_summary">أقتراح تلقائي إضافة البيانات في كل مرة يتم فيها اكتشاف قائمة فارغة.</string>
-    <string name="share_summary">أقترح تلقائي مشاركة العنصر في كل مرة يتم فيها تحديث العنصر بنجاح.</string>
-
-    <!--Calender-->
-    <string name="today">اليوم</string>
-    <string name="yesterday">الأمس</string>
-    <string name="this_month">الشهر الحالي</string>
-    <string name="all_time">الكل</string>
-
-
-    <!--City-->
-    <string name="city_list">قائمة المدن</string>
-    <string name="city_name">أسم المدينه</string>
-    <string name="city_items">بيانات المدينة</string>
-    <string name="empty_city_list">قائمة المدن فارغة.</string>
-    <string name="search_for_city">ابحث عن المدينة أو الولاية أو موقع العمل.</string>
-
-    <!--Client-->
-    <string name="client">العميل</string>
-    <string name="client_list">قائمة العملاء</string>
-    <string name="client_items">بيانات العملاء</string>
-    <string name="search_client">أبحث عن عميل</string>
-    <string name="search_clients">ابحث عن العملاء حسب الاسم أو الهاتف أو موقع العمل.</string>
-    <string name="empty_client_list">قائمة العملاء فارغة.</string>
-
-    <!--Expense-->
-    <string name="cost">تكلفة</string>
-    <string name="total">الأجمالي</string>
-    <string name="Income">دخل</string>
-    <string name="note">ملاحظات</string>
-    <string name="expenses_list">قائمة المصروفات</string>
-    <string name="search_expense">ابحث عن مصروف حسب التكلفة أو الاسم أو تاريخ الإنشاء…</string>
-    <string name="expenses">مصروفات</string>
+    <string name="add_summary">أقتراح تلقائي لإضافة البيانات في كل مرة يتم فيها أكتشاف قائمة فارغة.</string>
+    <string name="share_summary">أقتراح تلقائي لمشاركة العنصر في كل مرة يتم فيها تحديث العنصر بنجاح.</string>
 
     <!--Share-->
     <string name="by">بواسطة</string>
-    <string name="share_c">مشاركة</string>
+    <string name="date">تاريخ</string>
     <string name="shared_with">مشاركة مع</string>
     <string name="share_item">مشاركة العنصر</string>
     <string name="dial_client">أتصال بالعميل</string>
-    <string name="msg_whatsapp">رسالة عبر الواتس اب</string>
-    <string name="copy_as_text">نسخ كنص عادي?</string>
+    <string name="copy_as_text">نسخ كنص عادي؟</string>
     <string name="copied">تمت نسخها إلى الحافظة.</string>
-
-
-    <!--Team-->
-    <string name="my_team">فريقي</string>
-    <string name="team">فريق</string>
-    <string name="team_list">فريق</string>
-    <string name="last_login">اخر ظهور</string>
-    <string name="team_summary">تفعيل وإلغاء تفعيل الفريق.</string>
-
-    <!--Note-->
-    <string name="notes_list">قائمة الملاحظات</string>
-
-    <!--UserProfile-->
-    <string name="owner">المالك</string>
-    <string name="name">الأسم</string>
-    <string name="phone_number">رقم الهاتف</string>
-    <string name="profile">الملف الشخصي</string>
 
     <!--Filter-->
     <string name="filter">تصفية</string>
-    <string name="active">نشط</string>
-    <string name="uncompleted">نشط</string>
-    <string name="buy">بيع</string>
-    <string name="sell">شراء</string>
-    <string name="admin">مدير</string>
-    <string name="admins_only">مدير فقط</string>
-    <string name="view_uncompleted">عرض العناصر النشطه؟</string>
     <string name="filtered">تصفية</string>
-    <string name="filter_balance">الرصيد الحالي</string>
-    <string name="exchange_list">قائمة المعاملات</string>
-    <string name="search_items">ابحث حسب العميل أو الموقع أو تاريخ…</string>
     <string name="filter_by_month">تصفية خلال هذا الشهر.</string>
-    <string name="filter_by_month_summary">تصفية البيانات وعملية البحث خلال هذا الشهر فقط.</string>
-
-    <!--Other-->
-    <string name="update">تحديث</string>
-    <string name="update_item">تحديث البيانات</string>
-    <string name="update_profile">تحديث البيانات</string>
-    <string name="update_by">تحديث بواسطة</string>
-    <string name="updated_success">تم التحديث بنجاح</string>
-    <string name="update_summary">قراءة وتحديث وحذف البيانات.</string>
-    <string name="delete_permanently">حذف نهائيا؟</string>
-    <string name="refresh_list">تحديث القائمة</string>
-
-
-    <!--Item-->
-    <string name="le">ج</string>
-    <string name="un">وحدة</string>
-    <string name="total_price">السعر الكلي</string>
-    <string name="price">السعر</string>
-    <string name="quantity">الكمية</string>
-
-    <!--Item-->
-    <string name="add">أضافة</string>
-    <string name="add_c">أضافة</string>
-    <string name="empty">فارغ.</string>
-    <string name="date">تاريخ</string>
-    <string name="expand">عرض القائمة</string>
-    <string name="confirm">تأكيد</string>
-    <string name="view_all">عرض الكل؟</string>
-    <string name="view_item">عرض العنصر</string>
+    <string name="filter_by_month_summary">قم بتصفية البيانات وعملية البحث خلال هذا الشهر فقط.</string>
+    <string name="filter_by_active">تصفية العناصر النشطة.</string>
+    <string name="filter_by_active_summary">تصفية البيانات وعملية البحث حسب العناصر النشطة فقط.</string>
+    <string name="filter_by_sell">تصفية عناصر البيع.</string>
+    <string name="filter_by_sell_summary">قم بتصفية البيانات وعملية البحث حسب عناصر البيع فقط.</string>
 
 </resources>
